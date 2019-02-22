@@ -4,7 +4,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Header from './components/Header';
-import Explore from './components/Explore';
+import ExploreNew from './components/Explore_new';
 import Home from './components/Home';
 
 import logo from './logo.svg';
@@ -23,7 +23,7 @@ class App extends Component {
             </header>
               <div>
                 <Route path="/" exact component={Home} />
-                <Route path="/explore" component={Explore} />
+                <Route path="/explore" component={ExploreNew} />
               </div>
           </div>
         </Router>
