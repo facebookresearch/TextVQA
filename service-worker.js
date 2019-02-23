@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "facebookresearch.github.io/TextVQA/precache-manifest.b7823fce8b11f53bd213132178c8cf76.js"
+  "facebookresearch.github.io/TextVQA/precache-manifest.c41437ea773b29c185c7dbf141d39016.js"
 );
 
 workbox.clientsClaim();
