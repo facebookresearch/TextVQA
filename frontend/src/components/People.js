@@ -4,7 +4,6 @@ import Link from '@material-ui/core/Link';
 import { withStyles, Typography } from "@material-ui/core";
 import * as people from '../people_list.json';
 import Avatar from '@material-ui/core/Avatar';
-import Typograph from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 const styles = (theme) => ({

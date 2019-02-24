@@ -29,6 +29,12 @@ const styles = theme => ({
 class Banner extends Component {
     seed = Math.round(Math.random() * 10000);
 
+    vars = {
+        nChunks: null,
+        originalChunks: [],
+        originalLen: 0
+    };
+
     getWidthForColumn = () => {
         // NOTE: Keep this is in this order.
         // Smallest key should come first
@@ -50,11 +56,25 @@ class Banner extends Component {
     }
 
     chunkArray = (arr, nChunks) => {
-        const chunks = []
-        const chunkSize = Math.ceil(arr.length / nChunks)
-        for(let i = 0; i < arr.length; i += chunkSize) {
-            chunks.push(arr.slice(i, i + chunkSize));
+        if (this.vars.nChunks !== nChunks) {
+            this.vars.nChunks = nChunks;
+            this.vars.originalChunks = [];
+            for(let i = 0; i < nChunks; i++) {
+                this.vars.originalChunks.push([]);
+            }
         }
+        const gap = Math.ceil((arr.length - this.vars.originalLen) / nChunks);
+        let index = 0;
+        const chunks = this.vars.originalChunks;
+
+        for(let i = this.vars.originalLen; i < arr.length; i += gap) {
+            chunks[index] = chunks[index].concat(arr.slice(i, i + gap));
+            index++;
+        }
+
+        this.vars.originalChunks = chunks;
+        this.vars.originalLen = arr.length;
+        this.vars.nChunks = nChunks;
 
         return chunks;
     }

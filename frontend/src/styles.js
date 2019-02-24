@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { lightGreen, blue, white, green } from '@material-ui/core/colors/lightGreen';
 
 const theme = createMuiTheme({
     palette: {
@@ -15,6 +14,9 @@ const theme = createMuiTheme({
         dark: '#ba000d',
         contrastText: '#000',
       },
+    },
+    typography: {
+      useNextVariants: true,
     },
   });
 export default theme;

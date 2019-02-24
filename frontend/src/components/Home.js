@@ -206,7 +206,7 @@ class Home extends React.Component {
                 </Grid>
                 <Grid container className={this.props.classes.people}>
                     <Grid item xs={12} lg={6}>
-                        <Grid container justify="left" spacing={16}>
+                        <Grid container justify="flex-start" spacing={16}>
                             <Grid item xs={12} className={classes.gridItem}>
                                 <Typography
                                     className={classes.sectionHeader}
@@ -233,7 +233,7 @@ class Home extends React.Component {
                         </Grid>
                     </Grid>
                     <Grid item xs={12} lg={6}>
-                        <Grid container justify="left" spacing={16}>
+                        <Grid container justify="flex-start" spacing={16}>
                             <Grid item xs={12} className={classes.gridItem}>
                                 <Typography
                                     className={classes.sectionHeader}
@@ -245,7 +245,7 @@ class Home extends React.Component {
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid container justify="left" spacing={16}>
+                        <Grid container justify="flex-start" spacing={16}>
                             <Grid item xs={12} className={classes.gridItem}>
                                 <ul>
                                     <li>
@@ -271,7 +271,7 @@ class Home extends React.Component {
                 <div className={this.props.classes.people}>
                     <Grid
                         container
-                        justify="left"
+                        justify="flex-start"
                         spacing={16}
                         >
                         <Grid item xs={12} className={classes.gridItem}>
@@ -298,7 +298,7 @@ class Home extends React.Component {
                     </Grid>
                 </div>
                 <div className={this.props.classes.people}>
-                    <Grid container justify="left" spacing={16}>
+                    <Grid container justify="flex-start" spacing={16}>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Typography
                                 className={classes.sectionHeader}
