@@ -29,24 +29,6 @@ const styles = theme => ({
 class Banner extends Component {
     seed = Math.round(Math.random() * 10000);
 
-    updateQuery = (query) => {
-        let body = query.body;
-        body = body.split('\n')
-        let queryParams = JSON.parse(body[1]);
-        queryParams["query"] = {
-            "function_score": {
-                "query": queryParams["query"],
-                "random_score": {
-                    "seed": this.seed
-                }
-            }
-        };
-
-        body[1] = JSON.stringify(queryParams)
-        query.body = body.join('\n');
-        return query;
-    }
-
     getWidthForColumn = () => {
         // NOTE: Keep this is in this order.
         // Smallest key should come first
@@ -114,6 +96,9 @@ class Banner extends Component {
 
     getMaxAnswer = (answers) => {
         const counter = {}
+        if (!answers) {
+            return '';
+        }
         let maxWord = answers[0];
         let maxCount = 1;
 
@@ -172,7 +157,7 @@ class Banner extends Component {
                             </Typography> : ''
                         }
                         {
-                            this.props.showAnswers ?
+                            this.props.showAnswers && maxAnswer.length > 0 ?
                             <Typography variant="caption">
                                 {maxAnswer}
                             </Typography> : ''
@@ -191,14 +176,13 @@ class Banner extends Component {
                     dataField="question"
                     title="Results"
                     from={0}
-                    size={25}
-                    pagination={false}
+                    size={this.props.size || 25}
+                    pagination={this.props.pagination || false}
+                    showResultStats={this.props.showResultStats}
+                    loader={this.props.loader}
                     react={this.props.reactValues}
                     renderAllData={this.renderCardComponents}
-                    style={{
-                        "width": "90%",
-                        "textAlign": "center"
-                    }}
+                    style={this.props.style || {}}
                 />
             </Grid>
         );
