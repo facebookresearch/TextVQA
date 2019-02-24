@@ -1,134 +1,211 @@
-import React from 'react';
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Masonry from 'react-masonry-component';
-import InfinteScroll from 'react-infinite-scroller';
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Button from '@material-ui/core/Button';
 
-import ImageCard from './ImageCard'
-import * as data from '../TextVQA_with_url_val.json';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import {
+    ReactiveBase, CategorySearch, MultiDropdownList
+} from '@appbaseio/reactivesearch';
+import Grid from '@material-ui/core/Grid'
 
+import * as config from '../frontend_config.json';
+import Banner from './Banner';
 
-const styles = {
+const styles = theme => ({
     root: {
-      width: '100%',
+        flexGrow: 1
     },
-    imgElement: {
-        width: '200px',
-        listStyle: 'none'
-    },
-};
-  
-const masonryOptions = {
-    transitionDuration: 10
-};
- 
-const imagesLoadedOptions = { background: '.my-bg-image-el' }
-
-function shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
+    optionsMenuButton: {
+        width: '100%'
     }
-    return a;
-}
+});
 
-class Explore extends React.Component {
+class Explore extends Component {
+    seed = Math.round(Math.random() * 10000);
     state = {
-        layoutReady: false,
-        elements: [],
-        page: 0,
-        hasMore: true
-    }
-
-    handleImagesLoaded = (instanceImageLoaded) => {
-        if (this.vars.first) {
-            return;
-        }
-        this.vars.first = true;
-        this.show();
-    }
-
-    loadMore = () => {
-        const elements = shuffle(data['data'].slice(this.state.page * 50, (this.state.page + 1) * 50));
-        this.setState({
-            elements: this.state.elements.concat(elements),
-            page: this.state.page + 1,
-            hasMore: (this.state.page + 1) * 50 < data['data'].length
-        })
+        showOCRBoxes: true,
+        showQuestions: true,
+        showAnswers: true,
+        anchorEl: null
     };
 
-    getElements = () => {
-        const imageIds = []
+    reactValues = {
+        and: [
+            "searchbox", "set_name", "image_classes",
+            "ocr_tokens", "answers"
+        ]
+    }
 
-        const childElements = this.state.elements.filter((item, idx) => {
-            if (imageIds[item['image']]) {
-                return false;
+    updateQuery = (query) => {
+        let body = query.body;
+        body = body.split('\n')
+        let queryParams = JSON.parse(body[1]);
+        queryParams["query"] = {
+            "function_score": {
+                "query": queryParams["query"],
+                "random_score": {
+                    "seed": this.seed
+                }
             }
-            imageIds[item['image']] = 1;
-            return true;
-        }).map((item, idx) => {
-            return (
-                <ImageCard key={idx} imgUrl={item['flickr_url']} question={item['question']} answer={item['answers'][0]} />
-            );
-        });
+        };
 
-        return childElements;
+        body[1] = JSON.stringify(queryParams)
+        body = body.join('\n');
+        body = body.replace('"field":"set_name"', '"field":"set_name.keyword"');
+        body = body.replace('"field":"image_classes"', '"field":"image_classes.keyword"');
+        query.body = body;
+        return query;
     }
 
-    getLoaderElement = () => {
-        return (<CircularProgress key={Math.random()}/>)
+    handleCheckboxChange = name => event => {
+        this.setState({ [name]: event.target.checked });
+    };
+
+    handleMenuButtonClick = (event) => {
+        this.setState({ anchorEl: event.currentTarget });
     }
-    
-    handleLayoutReady = () => {
-		if (!this.state.layoutReady) {
-			this.setState({ layoutReady: true });
-		}
-	}
+
+    handleMenuClose = () => {
+        this.setState({ anchorEl: null });
+    }
 
     render() {
-        const { classes } = this.props;
-
-        return (
-            <div className={classes.root}>
-
-                <Grid container direction="row" justify="center" alignItems="flex-start">
-                    <Grid item xs={12} md={10}>
-                        <InfinteScroll
-                            loader={this.getLoaderElement()}
-                            loadMore={this.loadMore}
-                            hasMore={this.state.hasMore}
-                            threshold={1000}>
-                            <Masonry
-                                className={'my-gallery-class'}
-                                elementType={'ul'} 
-                                // style={{ 
-                                //     display: (this.state.layoutReady)
-                                //         ? 'none'
-                                //         : 'block', 
-                                // }}                            
-                                options={masonryOptions} 
-                                disableImagesLoaded={false} 
-                                updateOnEachImageLoad={false} 
-                                imagesLoadedOptions={imagesLoadedOptions} 
-                                onLayoutComplete={this.handleLayoutReady}
-                            >
-                                {this.getElements()}
-                            </Masonry>
-                        </InfinteScroll>
-                    </Grid>
+      return (
+          <ReactiveBase
+            app={config.index_name}
+            url={config.server_url}
+            transformRequest={this.updateQuery}
+          >
+            <Grid
+                container
+                direction="row"
+                className={this.props.classes.root}
+                justify="center"
+                alignItems="center"
+            >
+                <Grid item xs={12} md={6} lg={4}>
+                    <CategorySearch
+                        componentId="searchbox"
+                        dataField="question"
+                        categoryField="question"
+                        placeholder="Search for questions"
+                        style={{
+                            padding: "5px"
+                        }}
+                    />
                 </Grid>
-            </div>
-        );
+                <Grid item xs={12} md={2} lg={1}>
+                    <MultiDropdownList
+                        componentId="set_name"
+                        dataField="set_name"
+                        placeholder="Choose set"
+                        showSearch={false}
+                    />
+                </Grid>
+                <Grid item xs={12} md={2} lg={2}>
+                    <MultiDropdownList
+                        componentId="image_classes"
+                        dataField="image_classes"
+                        placeholder="Choose classes"
+                        showSearch={false}
+                    />
+                </Grid>
+                <Grid item xs={12} md={2} lg={1}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        className={this.props.classes.optionsMenuButton}
+                        aria-owns={this.state.anchorEl ? 'simple-menu' : undefined}
+                        aria-haspopup="true"
+                        onClick={this.handleMenuButtonClick}
+                    >
+                        Options
+                    </Button>
+                    <Menu
+                        anchorEl={this.state.anchorEl}
+                        open={Boolean(this.state.anchorEl)}
+                        onClose={this.handleMenuClose}
+                    >
+                        <MenuItem>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        checked={this.state.showOCRBoxes}
+                                        onChange={this.handleCheckboxChange('showOCRBoxes')}
+                                        value="showOCRBoxes"
+                                    />
+                                }
+                                label="Show OCR boxes">
+                            </FormControlLabel>
+                        </MenuItem>
+                        <MenuItem>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        checked={this.state.showQuestions}
+                                        onChange={this.handleCheckboxChange('showQuestions')}
+                                        value="showQuestions"
+                                    />
+                                }
+                                label="Show questions">
+                            </FormControlLabel>
+                        </MenuItem>
+                        <MenuItem>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        checked={this.state.showAnswers}
+                                        onChange={this.handleCheckboxChange('showAnswers')}
+                                        value="showAnswers"
+                                    />
+                                }
+                                label="Show answers">
+                            </FormControlLabel>
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+                <Grid item xs={12} md={6} lg={2}>
+                    <CategorySearch
+                        componentId="ocr_tokens"
+                        dataField="ocr_tokens"
+                        categoryField="ocr_tokens"
+                        placeholder="Search for OCR tokens"
+                        style={{
+                            padding: "5px"
+                        }}
+                    />
+                </Grid>
+                <Grid item xs={12} md={6} lg={2}>
+                    <CategorySearch
+                        componentId="answers"
+                        dataField="answers"
+                        categoryField="answers"
+                        placeholder="Search for Answers"
+                        style={{
+                            padding: "5px"
+                        }}
+                    />
+                </Grid>
+                <Banner
+                    showOCRBoxes={this.state.showOCRBoxes}
+                    showAnswers={this.state.showAnswers}
+                    showQuestions={this.state.showQuestions}
+                    reactValues={this.reactValues}
+                    showResultStats={true}
+                    pagination={false}
+                    size={25}
+                    style={{
+                        "width": "90%",
+                        "textAlign": "center"
+                    }}
+                />
+            </Grid>
+        </ReactiveBase>
+      );
+    }
 }
-}
-
-Explore.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(Explore);
