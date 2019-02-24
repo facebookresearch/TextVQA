@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "8bbc33a321808b99c292",
+    "revision": "7ada266ab38ab2ab3977",
     "url": "/TextVQA/static/css/main.54a2b5a0.chunk.css"
   },
   {
-    "revision": "8bbc33a321808b99c292",
-    "url": "/TextVQA/static/js/main.8bbc33a3.chunk.js"
+    "revision": "7ada266ab38ab2ab3977",
+    "url": "/TextVQA/static/js/main.7ada266a.chunk.js"
   },
   {
     "revision": "847e23a3fce978b460d7",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/TextVQA/static/js/runtime~main.78510248.js"
   },
   {
-    "revision": "65ece208b30cc97d31f5adc2ffa0df88",
+    "revision": "cbcc419e2c9251bca5c2942667e08054",
     "url": "/TextVQA/index.html"
   }
 ];
