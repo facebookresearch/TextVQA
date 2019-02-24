@@ -84,18 +84,18 @@ class Banner extends Component {
             return "";
         }
 
-        const cards = [...results.results, ...results.streamResults].map((result) => {
-            return this.renderCardComponent(result);
+        const cards = [...results.results, ...results.streamResults].map((result, idx) => {
+            return this.renderCardComponent(result, idx);
         });
 
         const colWidth = this.getWidthForColumn();
         const numChunks = Math.floor(100 / colWidth);
         const cardChunks = this.chunkArray(cards, numChunks);
 
-        const containerChunks = cardChunks.map((chunk) => {
+        const containerChunks = cardChunks.map((chunk, idx) => {
             return (
                 <div
-                    key={Math.random()}
+                    key={idx}
                     style={{
                         width: colWidth + '%',
                         float: 'left'
@@ -139,8 +139,7 @@ class Banner extends Component {
         return maxWord;
     }
 
-    renderCardComponent = (result) => {
-        const id = Math.random();
+    renderCardComponent = (result, cardIdx) => {
         const boxes = []
 
         for(const idx in result.ocr_info) {
@@ -160,10 +159,10 @@ class Banner extends Component {
         const maxAnswer = this.getMaxAnswer(result.answers);
         return (
             <div
-                key={id}
+                key={cardIdx}
                 className={this.props.classes.gridItem}
             >
-                <Card key={id} className={this.props.classes.card}>
+                <Card key={cardIdx} className={this.props.classes.card}>
                     <BoundingBox
                         showBoxes={this.props.showOCRBoxes}
                         imageUrl={result.flickr_300k_url}
