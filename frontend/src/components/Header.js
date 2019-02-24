@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import theme from '../styles'
 
 const styles = {
@@ -21,7 +21,7 @@ const styles = {
         textDecoration: 'none'
     }
   };
-  
+
 function Header(props) {
     const { classes } = props;
 
@@ -30,11 +30,15 @@ function Header(props) {
         <AppBar position="static" color="primary">
             <Toolbar>
             <Typography variant="h6" color="inherit" align="left" className={classes.grow}>
-                <Link className={classes.buttonLink} to="/">
+                <Link
+                    underline="none"
+                    className={classes.buttonLink}
+                    href={process.env.PUBLIC_URL + '/'}
+                >
                     TextVQA
                 </Link>
             </Typography>
-            <Link className={classes.buttonLink} to="/explore">
+            <Link underline="none" className={classes.buttonLink} href="explore">
                 <Button color="inherit">Explore</Button>
             </Link>
             </Toolbar>

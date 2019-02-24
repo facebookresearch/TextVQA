@@ -22,7 +22,7 @@ const People = (props) => {
         const key = Math.random();
         return (
             <Grid item key={key} xs={12} sm={6} md={3} lg={2}>
-                <Link href={person.website}>
+                <Link target="_blank" rel="noopener" href={person.website}>
                     <Avatar className={props.classes.avatar} src={person.img_url}/>
                 </Link>
                 <Typography variant="subtitle1">
