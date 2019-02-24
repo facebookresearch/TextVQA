@@ -6,12 +6,14 @@ frontend/.pnp
 frontend/*.pnp.js
 
 # testing
-frontend//coverage
+frontend/coverage
 
 # production
-frontend//build
+frontend/build
 
 # misc
+config.json
+frontend_config.json
 .DS_Store
 .env.local
 .env.development.local
