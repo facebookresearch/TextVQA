@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "facebookresearch.github.io/TextVQA/precache-manifest.c41437ea773b29c185c7dbf141d39016.js"
+  "/TextVQA/precache-manifest.ccf54532411b1795cd184dc51e103975.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("facebookresearch.github.io/TextVQA/index.html", {
+workbox.routing.registerNavigationRoute("/TextVQA/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

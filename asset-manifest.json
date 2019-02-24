@@ -1,14 +1,14 @@
 {
-  "main.css": "facebookresearch.github.io/TextVQA/static/css/main.2c5aa156.chunk.css",
-  "main.js": "facebookresearch.github.io/TextVQA/static/js/main.48d5d589.chunk.js",
-  "main.js.map": "facebookresearch.github.io/TextVQA/static/js/main.48d5d589.chunk.js.map",
-  "static/js/1.323c2b4e.chunk.js": "facebookresearch.github.io/TextVQA/static/js/1.323c2b4e.chunk.js",
-  "static/js/1.323c2b4e.chunk.js.map": "facebookresearch.github.io/TextVQA/static/js/1.323c2b4e.chunk.js.map",
-  "runtime~main.js": "facebookresearch.github.io/TextVQA/static/js/runtime~main.9622ff25.js",
-  "runtime~main.js.map": "facebookresearch.github.io/TextVQA/static/js/runtime~main.9622ff25.js.map",
-  "static/media/logo.svg": "facebookresearch.github.io/TextVQA/static/media/logo.5d5d9eef.svg",
-  "static/css/main.2c5aa156.chunk.css.map": "facebookresearch.github.io/TextVQA/static/css/main.2c5aa156.chunk.css.map",
-  "index.html": "facebookresearch.github.io/TextVQA/index.html",
-  "precache-manifest.c41437ea773b29c185c7dbf141d39016.js": "facebookresearch.github.io/TextVQA/precache-manifest.c41437ea773b29c185c7dbf141d39016.js",
-  "service-worker.js": "facebookresearch.github.io/TextVQA/service-worker.js"
+  "main.css": "/TextVQA/static/css/main.2c5aa156.chunk.css",
+  "main.js": "/TextVQA/static/js/main.fbd2cc8f.chunk.js",
+  "main.js.map": "/TextVQA/static/js/main.fbd2cc8f.chunk.js.map",
+  "static/js/1.c045ec65.chunk.js": "/TextVQA/static/js/1.c045ec65.chunk.js",
+  "static/js/1.c045ec65.chunk.js.map": "/TextVQA/static/js/1.c045ec65.chunk.js.map",
+  "runtime~main.js": "/TextVQA/static/js/runtime~main.78510248.js",
+  "runtime~main.js.map": "/TextVQA/static/js/runtime~main.78510248.js.map",
+  "static/media/logo.svg": "/TextVQA/static/media/logo.5d5d9eef.svg",
+  "static/css/main.2c5aa156.chunk.css.map": "/TextVQA/static/css/main.2c5aa156.chunk.css.map",
+  "index.html": "/TextVQA/index.html",
+  "precache-manifest.ccf54532411b1795cd184dc51e103975.js": "/TextVQA/precache-manifest.ccf54532411b1795cd184dc51e103975.js",
+  "service-worker.js": "/TextVQA/service-worker.js"
 }
