@@ -1,13 +1,13 @@
 {
   "main.css": "/TextVQA/static/css/main.54a2b5a0.chunk.css",
-  "main.js": "/TextVQA/static/js/main.8d62fc2b.chunk.js",
-  "main.js.map": "/TextVQA/static/js/main.8d62fc2b.chunk.js.map",
-  "static/js/1.847e23a3.chunk.js": "/TextVQA/static/js/1.847e23a3.chunk.js",
-  "static/js/1.847e23a3.chunk.js.map": "/TextVQA/static/js/1.847e23a3.chunk.js.map",
+  "main.js": "/TextVQA/static/js/main.217d7d6d.chunk.js",
+  "main.js.map": "/TextVQA/static/js/main.217d7d6d.chunk.js.map",
+  "static/js/1.a11bbd6d.chunk.js": "/TextVQA/static/js/1.a11bbd6d.chunk.js",
+  "static/js/1.a11bbd6d.chunk.js.map": "/TextVQA/static/js/1.a11bbd6d.chunk.js.map",
   "runtime~main.js": "/TextVQA/static/js/runtime~main.78510248.js",
   "runtime~main.js.map": "/TextVQA/static/js/runtime~main.78510248.js.map",
   "static/css/main.54a2b5a0.chunk.css.map": "/TextVQA/static/css/main.54a2b5a0.chunk.css.map",
   "index.html": "/TextVQA/index.html",
-  "precache-manifest.6e163eeafdbf387c3fbc0584d284c750.js": "/TextVQA/precache-manifest.6e163eeafdbf387c3fbc0584d284c750.js",
+  "precache-manifest.4e87096966131ced74ba6d6849f4d443.js": "/TextVQA/precache-manifest.4e87096966131ced74ba6d6849f4d443.js",
   "service-worker.js": "/TextVQA/service-worker.js"
 }
