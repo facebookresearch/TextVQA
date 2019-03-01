@@ -2,7 +2,7 @@
   "name": "textvqa",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://facebookresearch.github.io/TextVQA",
+  "homepage": "https://textvqa.org",
   "dependencies": {
     "@appbaseio/reactivesearch": "^3.0.0-beta.3",
     "@material-ui/core": "^3.9.2",
