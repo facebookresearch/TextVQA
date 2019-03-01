@@ -56,7 +56,10 @@ class Explore extends Component {
         body = body.join('\n');
         body = body.replace('"field":"set_name"', '"field":"set_name.keyword"');
         body = body.replace('"field":"image_classes"', '"field":"image_classes.keyword"');
-        query.body = body;
+        body = body.replace('"field":"question"', '"field":"question.keyword"');
+        body = body.replace('"field":"ocr_tokens"', '"field":"ocr_tokens.keyword"');
+        body = body.replace('"field":"answers"', '"field":"answers.keyword"');
+        query.body = body.toLowerCase();
         return query;
     }
 
@@ -90,19 +93,24 @@ class Explore extends Component {
                     <CategorySearch
                         componentId="searchbox"
                         dataField="question"
+                        autosuggest={false}
                         categoryField="question"
                         placeholder="Search for questions"
+                        debounce={1000}
                         style={{
                             padding: "5px"
                         }}
+                        react={{ and: ['set_name', 'image_classes', 'ocr_tokens', 'answers']}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2} lg={1}>
                     <MultiDropdownList
                         componentId="set_name"
                         dataField="set_name"
+                        showCount={false}
                         placeholder="Choose set"
                         showSearch={false}
+                        react={{ and: ['question', 'image_classes', 'ocr_tokens', 'answers']}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2} lg={2}>
@@ -111,6 +119,7 @@ class Explore extends Component {
                         dataField="image_classes"
                         placeholder="Choose classes"
                         showSearch={false}
+                        react={{ and: ['set_name', 'question', 'ocr_tokens', 'answers']}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2} lg={1}>
@@ -172,10 +181,13 @@ class Explore extends Component {
                         componentId="ocr_tokens"
                         dataField="ocr_tokens"
                         categoryField="ocr_tokens"
+                        debounce={1400}
                         placeholder="Search for OCR tokens"
                         style={{
                             padding: "5px"
                         }}
+                        react={{ and: ['set_name', 'image_classes', 'question', 'answers']}}
+
                     />
                 </Grid>
                 <Grid item xs={12} md={6} lg={2}>
@@ -184,9 +196,11 @@ class Explore extends Component {
                         dataField="answers"
                         categoryField="answers"
                         placeholder="Search for Answers"
+                        debounce={1400}
                         style={{
                             padding: "5px"
                         }}
+                        react={{ and: ['set_name', 'image_classes', 'ocr_tokens', 'question']}}
                     />
                 </Grid>
                 <Banner
