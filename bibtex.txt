@@ -2,5 +2,6 @@
   title={Towards VQA models that can read},
   author={Singh, Amanpreet and Natarajan, Vivek and Shah, Meet and Jiang, Yu
   and Chen, Xinlei and Batra, Dhruv and Parikh, Devi and Rohrbach, Marcus},
+  journal={In proceedings of Computer Vision and Pattern Recognition},
   year={2019}
 }
