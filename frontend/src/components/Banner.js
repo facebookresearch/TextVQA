@@ -28,7 +28,7 @@ const styles = theme => ({
 
 class Banner extends Component {
     seed = Math.round(Math.random() * 10000);
-
+    state = {render: 0};
     vars = {
         nChunks: null,
         originalChunks: [],
@@ -56,13 +56,23 @@ class Banner extends Component {
     }
 
     chunkArray = (arr, nChunks) => {
-        if (this.vars.nChunks !== nChunks) {
+        let isNewSearch = false;
+
+        if (this.vars.originalChunks.length > 0 &&
+            this.vars.originalChunks[0].length > 0 && this.vars.originalChunks[0][0] !== arr[0]) {
+                isNewSearch = true;
+            }
+        if (this.vars.nChunks !== nChunks || isNewSearch) {
             this.vars.nChunks = nChunks;
             this.vars.originalChunks = [];
+            this.vars.originalLen = 0;
+            this.seed = Math.round(Math.random() * 10000);
+
             for(let i = 0; i < nChunks; i++) {
                 this.vars.originalChunks.push([]);
             }
         }
+
         const gap = Math.ceil((arr.length - this.vars.originalLen) / nChunks);
         let index = 0;
         const chunks = this.vars.originalChunks;
@@ -95,7 +105,7 @@ class Banner extends Component {
         const containerChunks = cardChunks.map((chunk, idx) => {
             return (
                 <div
-                    key={idx}
+                    key={idx + this.seed}
                     style={{
                         width: colWidth + '%',
                         float: 'left'
@@ -159,7 +169,7 @@ class Banner extends Component {
         const maxAnswer = this.getMaxAnswer(result.answers);
         return (
             <div
-                key={cardIdx}
+                key={cardIdx + this.seed}
                 className={this.props.classes.gridItem}
             >
                 <Card key={cardIdx} className={this.props.classes.card}>
