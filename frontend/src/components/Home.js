@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Link from '@material-ui/core/Link';
+import Divider from '@material-ui/core/Divider';
 
 import Banner from './Banner';
 import People from './People';
@@ -26,7 +27,6 @@ const styles = theme => ({
       height: '50vh'
   },
   people: {
-      width: '60%',
       margin: '0 auto',
       marginTop: '2em'
   },
@@ -46,6 +46,9 @@ const styles = theme => ({
   },
   container: {
     padding: theme.spacing.unit * 2,
+  },
+  bannerLogo: {
+      width: '100%'
   }
 });
 
@@ -153,10 +156,24 @@ class Home extends React.Component {
                             }}
                         >
                             <Paper className={classes.paper} elevation={1}>
-                                <Typography variant="h2">
-                                TextVQA
-                                </Typography>
-
+                                <Grid
+                                    container
+                                    justify="center"
+                                    alignItems="center"
+                                    >
+                                    <Grid
+                                        item
+                                        xs={10}
+                                        md={8}
+                                        lg={6}
+                                    >
+                                        <img
+                                            srcSet="assets/images/textvqa_logo_and_text_green.svg"
+                                            alt="TextVQA"
+                                            className={classes.bannerLogo}
+                                        />
+                                    </Grid>
+                                </Grid>
                                 <Typography variant="subtitle1">
                                 A dataset to benchmark visual reasoning based on text in images.
                                 </Typography>
@@ -170,28 +187,28 @@ class Home extends React.Component {
                                     alignItems="center"
                                     spacing={16}
                                 >
-                                    <Grid item xs={12} sm={6} md={3}>
+                                    <Grid item xs={6} sm={6} md={3}>
                                         <Link href="explore">
                                             <Button variant="contained" color="primary">
                                                 Explore
                                             </Button>
                                         </Link>
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={3}>
+                                    <Grid item xs={6} sm={6} md={3}>
                                         <Link href="paper">
                                             <Button variant="contained" color="primary">
                                                 Paper
                                             </Button>
                                         </Link>
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={3}>
+                                    <Grid item xs={6} sm={6} md={3}>
                                         <Link href="challenge">
                                             <Button variant="contained" color="primary">
                                                 Challenge
                                             </Button>
                                         </Link>
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={3}>
+                                    <Grid item xs={6} sm={6} md={3}>
                                         <Link href="download">
                                             <Button variant="contained" color="primary">
                                                 Download
@@ -204,115 +221,157 @@ class Home extends React.Component {
 
                     </Grid>
                 </Grid>
-                <Grid container className={this.props.classes.people}>
-                    <Grid item xs={12} lg={6}>
-                        <Grid container justify="flex-start" spacing={16}>
-                            <Grid item xs={12} className={classes.gridItem}>
-                                <Typography
-                                    className={classes.sectionHeader}
-                                    variant="h4"
-                                    gutterBottom
-                                    align="left"
-                                >
-                                    Overview
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={12} className={classes.gridItem}>
-                                <Typography
-                                    className={classes.sectionHeader}
-                                    variant="subtitle1"
-                                    gutterBottom
-                                    align="left"
-                                >
-                                    TextVQA requires models to read and reason about questions based on text in images.
-                                    Specifically, given an image, model will be provided a question which will require reading
-                                    and reasoning on text present in it. Current state-of-the-art visual question answering (VQA)
-                                    fail at doing this task.
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs={12} lg={6}>
-                        <Grid container justify="flex-start" spacing={16}>
-                            <Grid item xs={12} className={classes.gridItem}>
-                                <Typography
-                                    className={classes.sectionHeader}
-                                    variant="h4"
-                                    gutterBottom
-                                    align="left"
-                                >
-                                Statistics
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid container justify="flex-start" spacing={16}>
-                            <Grid item xs={12} className={classes.gridItem}>
-                                <ul>
-                                    <li>
-                                      <Typography variant="subtitle1" align="left">
-                                          28408 images from OpenImages
-                                      </Typography>
-                                    </li>
-                                    <li>
-                                        <Typography variant="subtitle1" align="left">
-                                          45336 questions
-                                        </Typography>
-                                    </li>
-                                    <li>
-                                        <Typography variant="subtitle1" align="left">
-                                          453360 ground truth answers
-                                        </Typography>
-                                    </li>
-                                </ul>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <div className={this.props.classes.people}>
+                <Grid
+                    container
+                    justify="center"
+                    alignContent="center"
+                >
                     <Grid
-                        container
-                        justify="flex-start"
-                        spacing={16}
+                        item
+                        xs={10}
+                        md={8}
+                        lg={6}
+                        className={classes.people}
+                    >
+                        <Grid container justify="center" alignContent="center">
+                            <Grid item xs={12} lg={6}>
+                                <Grid container justify="flex-start" spacing={16}>
+                                    <Grid item xs={12} className={classes.gridItem}>
+                                        <Typography
+                                            className={classes.sectionHeader}
+                                            variant="h4"
+                                            gutterBottom
+                                            align="left"
+                                            >
+                                            Overview
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={12} className={classes.gridItem}>
+                                        <Typography
+                                            className={classes.sectionHeader}
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            align="left"
+                                        >
+                                            TextVQA requires models to read and reason about questions based on text in images.
+                                            Specifically, given an image, model will be provided a question which will require reading
+                                            and reasoning on text present in it. Current state-of-the-art visual question answering (VQA)
+                                            fail at doing this task.
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={12} lg={6}>
+                                <Grid container justify="flex-start" spacing={16}>
+                                    <Grid item xs={12} className={classes.gridItem}>
+                                        <Typography
+                                            className={classes.sectionHeader}
+                                            variant="h4"
+                                            gutterBottom
+                                            align="left"
+                                        >
+                                        Statistics
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                                <Grid container justify="flex-start" spacing={16}>
+                                    <Grid item xs={12} className={classes.gridItem}>
+                                        <ul>
+                                            <li>
+                                            <Typography variant="subtitle1" align="left">
+                                                28408 images from OpenImages
+                                            </Typography>
+                                            </li>
+                                            <li>
+                                                <Typography variant="subtitle1" align="left">
+                                                45336 questions
+                                                </Typography>
+                                            </li>
+                                            <li>
+                                                <Typography variant="subtitle1" align="left">
+                                                453360 ground truth answers
+                                                </Typography>
+                                            </li>
+                                        </ul>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <div className={classes.people}>
+                            <Grid
+                                container
+                                justify="flex-start"
+                                spacing={16}
+                                >
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        className={classes.sectionHeader}
+                                        variant="h4"
+                                        align="left"
+                                        gutterBottom
+                                        >
+                                        Citation
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        variant="subtitle1"
+                                        align="left"
+                                        gutterBottom
+                                        >
+                                        Please cite using <Link href="bibtex.txt">
+                                        this BiBTeX
+                                        </Link> if you use TextVQA in your work.
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        </div>
+                        <div className={classes.people}>
+                            <Grid container justify="flex-start" spacing={16}>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        className={classes.sectionHeader}
+                                        variant="h4"
+                                        align="left"
+                                        gutterBottom
+                                        >
+                                        People
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                            <div className={classes.container}/>
+                            <People/>
+                        </div>
+
+                        <Divider className={classes.people}/>
+                        <Grid
+                            container
+                            justify="flex-start"
+                            alignContent="center"
+                            spacing={16}
+                            className={classes.sectionHeader}
                         >
-                        <Grid item xs={12} className={classes.gridItem}>
-                            <Typography
-                                className={classes.sectionHeader}
-                                variant="h4"
-                                align="left"
-                                gutterBottom
-                                >
-                                Citation
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} className={classes.gridItem}>
-                            <Typography
-                                variant="subtitle1"
-                                align="left"
-                                gutterBottom
-                                >
-                                Please cite using <Link href="bibtex.txt">
-                                this BiBTeX
-                                </Link> if you use TextVQA in your work.
-                            </Typography>
+                            <Grid item xs={6} md={6} lg={4}>
+                                <img
+                                    className={classes.bannerLogo}
+                                    style={{
+                                        marginTop: '5%'
+                                    }}
+                                    srcSet="assets/images/fair_logo.png"
+                                    alt="Facebook Artificial Intelligence Research"
+                                />
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={2}>
+                                <img
+                                    className={classes.bannerLogo}
+                                    srcSet="assets/images/gt_logo.png"
+                                    alt="Georgia Tech"
+                                />
+                            </Grid>
                         </Grid>
                     </Grid>
-                </div>
-                <div className={this.props.classes.people}>
-                    <Grid container justify="flex-start" spacing={16}>
-                        <Grid item xs={12} className={classes.gridItem}>
-                            <Typography
-                                className={classes.sectionHeader}
-                                variant="h4"
-                                align="left"
-                                gutterBottom
-                            >
-                                People
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    <div className={classes.container}/>
-                    <People/>
-                </div>
+
+                </Grid>
             </div>
         );
     }
