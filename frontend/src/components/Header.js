@@ -70,7 +70,7 @@ class Header extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { anchorEl, mobileMoreAnchorEl } = this.state;
+        const { mobileMoreAnchorEl } = this.state;
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
         const renderMobileMenu = (

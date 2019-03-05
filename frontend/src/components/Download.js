@@ -71,18 +71,23 @@ const Download = (props) => {
                         <Typography variant="h5" align="left">
                             <Link href={trainDownloadURL}>
                                 Training set
-                        </Link>
+                            </Link>
                         </Typography>
                         <ul className={props.classes.ulItems}>
                             <li>
                                 <Typography variant="subtitle1" align="left">
-                                    34602 questions
-                            </Typography>
+                                    34,602 questions
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography variant="subtitle1" align="left">
+                                    22,960 images
+                                </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     10.47 average extracted OCR tokens
-                            </Typography>
+                                </Typography>
                             </li>
                         </ul>
                     </Grid>
@@ -90,33 +95,45 @@ const Download = (props) => {
                         <Typography variant="h5" align="left">
                             <Link href={valDownloadURL}>
                                 Validation set
-                        </Link>
+                            </Link>
                         </Typography>
                         <ul className={props.classes.ulItems}>
                             <li>
                                 <Typography variant="subtitle1" align="left">
-                                    5000 questions
-                            </Typography>
+                                    5,000 questions
+                                </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
+                                    3,321 images
+                                </Typography>
+                            </li>
+
+                            <li>
+                                <Typography variant="subtitle1" align="left">
                                     10.72 average extracted OCR tokens
-                            </Typography>
+                                </Typography>
                             </li>
                         </ul>
                     </Grid>
                     <Grid className={props.classes.setItems} item xs={12} sm={6} md={4}>
                         <Typography variant="h5" align="left">
                             <Link href={testDownloadURL}>
-                                Testing set
-                        </Link>
+                                Test set
+                            </Link>
                         </Typography>
                         <ul className={props.classes.ulItems}>
                             <li>
                                 <Typography variant="subtitle1" align="left">
-                                    5734 questions
+                                    5,734 questions
                                 </Typography>
                             </li>
+                            <li>
+                                <Typography variant="subtitle1" align="left">
+                                    3,353 images
+                                </Typography>
+                            </li>
+
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     7.74 average extracted OCR tokens
@@ -134,8 +151,13 @@ const Download = (props) => {
                         <ul className={props.classes.ulItems}>
                             <li>
                                 <Typography variant="subtitle1" align="left">
-                                    Images for training and validation set are from OpenImages
-                                    which can be downloaded from <Link href={openImagesUrl}>here</Link>.
+                                    Images for training and validation set are from OpenImages train set
+                                    while images for test set are from OpenImages test set.
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography variant="subtitle1" align="left">
+                                    OpenImages train and test set images can be downloaded from <Link href={openImagesUrl}>here</Link>.
                                 </Typography>
                             </li>
                             <li>
@@ -152,6 +174,11 @@ const Download = (props) => {
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                 Numbers in the papers should be reported on v0.5 testing set (test-std).
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography variant="subtitle1" align="left">
+                                We also provide OCR tokens extracted from Rosetta system with the dataset.
                                 </Typography>
                             </li>
                             <li>
