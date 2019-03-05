@@ -10,46 +10,62 @@ import Divider from '@material-ui/core/Divider';
 
 import Banner from './Banner';
 import People from './People';
+import * as news from '../news.json';
 import * as config from '../frontend_config.json';
 import { ReactiveBase } from '@appbaseio/reactivesearch';
 
 
 const styles = theme => ({
-  paper: {
-    ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-  },
-  mainContainer: {
-      backgroundImage: 'radial-gradient( ' +
-      theme.palette.primary.light + ' 20% ,' + theme.palette.primary.dark + ' 100%)',
-      opacity: 0.9,
-      height: '50vh'
-  },
-  people: {
-      margin: '0 auto',
-      marginTop: '2em'
-  },
-  root: {
-    //   flexGrow: 1,
-    // marginTop: '50px'
-  },
-  divider: {
-      color: '#888',
-      width: '100%'
-  },
-  gridItem: {
-      padding: theme.spacing.unit * 2
-  },
-  sectionHeader: {
-      marginTop: '0.35em'
-  },
-  container: {
-    padding: theme.spacing.unit * 2,
-  },
-  bannerLogo: {
-      width: '100%'
-  }
+    paper: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+    },
+    mainContainer: {
+        backgroundImage: 'radial-gradient( ' +
+        theme.palette.primary.light + ' 20% ,' + theme.palette.primary.dark + ' 100%)',
+        opacity: 0.9,
+        height: '50vh'
+    },
+    people: {
+        margin: '0 auto',
+        marginTop: '1.5em'
+    },
+    root: {
+        // flexGrow: 1,
+        // marginTop: '50px'
+    },
+    divider: {
+        color: '#888',
+        width: '100%'
+    },
+    gridItem: {
+        padding: theme.spacing.unit * 1.5
+    },
+    sectionHeader: {
+        marginTop: '0.15em'
+    },
+    ulList: {
+        margin: '0'
+    },
+    container: {
+        padding: theme.spacing.unit * 2,
+    },
+    bannerLogo: {
+        width: '100%'
+    },
+    spanInlineBlock: {
+        display: 'inline'
+    },
+    greenColor: {
+        color: theme.palette.primary.main
+    },
+    hrefGreenColor: {
+        '& a': {
+            color: theme.palette.primary.main,
+            textDecoration: 'none'
+        }
+    }
 });
 
 class Home extends React.Component {
@@ -254,9 +270,8 @@ class Home extends React.Component {
                                             align="left"
                                         >
                                             TextVQA requires models to read and reason about questions based on text in images.
-                                            Specifically, given an image, model will be provided a question which will require reading
-                                            and reasoning on text present in it. Current state-of-the-art visual question answering (VQA)
-                                            fail at doing this task.
+                                            Specifically, given an image, model needs to answer a question
+                                            which will require reading and reasoning on text present in it.
                                         </Typography>
                                     </Grid>
                                 </Grid>
@@ -279,17 +294,17 @@ class Home extends React.Component {
                                         <ul>
                                             <li>
                                             <Typography variant="subtitle1" align="left">
-                                                28408 images from OpenImages
+                                                28,408 images from OpenImages
                                             </Typography>
                                             </li>
                                             <li>
                                                 <Typography variant="subtitle1" align="left">
-                                                45336 questions
+                                                45,336 questions
                                                 </Typography>
                                             </li>
                                             <li>
                                                 <Typography variant="subtitle1" align="left">
-                                                453360 ground truth answers
+                                                453,360 ground truth answers
                                                 </Typography>
                                             </li>
                                         </ul>
@@ -302,14 +317,13 @@ class Home extends React.Component {
                                 container
                                 justify="flex-start"
                                 spacing={16}
-                                >
+                            >
                                 <Grid item xs={12} className={classes.gridItem}>
                                     <Typography
                                         className={classes.sectionHeader}
                                         variant="h4"
                                         align="left"
-                                        gutterBottom
-                                        >
+                                    >
                                         Citation
                                     </Typography>
                                 </Grid>
@@ -317,7 +331,6 @@ class Home extends React.Component {
                                     <Typography
                                         variant="subtitle1"
                                         align="left"
-                                        gutterBottom
                                         >
                                         Please cite using <Link href="bibtex.txt">
                                         this BiBTeX
@@ -327,14 +340,47 @@ class Home extends React.Component {
                             </Grid>
                         </div>
                         <div className={classes.people}>
+                            <Grid
+                                container
+                                justify="flex-start"
+                                spacing={16}
+                            >
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        className={classes.sectionHeader}
+                                        variant="h4"
+                                        align="left"
+                                    >
+                                        News
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <ul className={classes.ulList}>
+                                        {news.news.map((obj, idx) => (
+                                            <li key={idx}>
+                                                <Typography
+                                                    align="left"
+                                                    variant="subtitle1"
+                                                >
+                                                <span>[{obj.date}] </span>
+                                                <span className={classes.hrefGreenColor} dangerouslySetInnerHTML={{__html: obj.news}}/>
+                                                </Typography>
+                                            </li>
+
+                                        ))}
+                                    </ul>
+                                </Grid>
+                            </Grid>
+                        </div>
+
+                        <div className={classes.people}>
                             <Grid container justify="flex-start" spacing={16}>
                                 <Grid item xs={12} className={classes.gridItem}>
                                     <Typography
                                         className={classes.sectionHeader}
                                         variant="h4"
                                         align="left"
-                                        gutterBottom
-                                        >
+                                    >
                                         People
                                     </Typography>
                                 </Grid>

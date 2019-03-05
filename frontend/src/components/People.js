@@ -18,7 +18,14 @@ const styles = (theme) => ({
 });
 
 const People = (props) => {
-    const peopleJSX = people.people.map((person) => {
+    let selectedPeople = []
+    if (props.people) {
+        selectedPeople = props.people;
+    } else {
+        selectedPeople = people.people;
+    }
+
+    const peopleJSX = selectedPeople.map((person) => {
         const key = Math.random();
         return (
             <Grid item key={key} xs={12} sm={6} md={3} lg={2}>
@@ -49,4 +56,4 @@ const People = (props) => {
 };
 
 
-export default withStyles(styles)(People)
+export default withStyles(styles)(People);
