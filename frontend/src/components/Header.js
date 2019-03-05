@@ -1,20 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+
+import { Route } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
-
 import Explore from '@material-ui/icons/Explore';
 import CloudDownload from '@material-ui/icons/CloudDownload';
+import Help from '@material-ui/icons/Help';
 import Equalizer from '@material-ui/icons/Equalizer';
 import Description from '@material-ui/icons/Description';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import theme from '../styles';
+
+import ExploreHelp from './ExploreHelp';
 
 const styles = {
     root: {
@@ -58,7 +62,20 @@ const styles = {
 class Header extends React.Component {
     state = {
         mobileMoreAnchorEl: null,
+        dialogOpen: false
     };
+
+    handleExploreOpen = () => {
+        this.setState({
+            dialogOpen: true
+        });
+    }
+
+    handleExploreClose = () => {
+        this.setState({
+            dialogOpen: false
+        });
+    }
 
     handleMobileMenuOpen = event => {
         this.setState({ mobileMoreAnchorEl: event.currentTarget });
@@ -81,6 +98,20 @@ class Header extends React.Component {
                 open={isMobileMenuOpen}
                 onClose={this.handleMenuClose}
             >
+                <Route exact path="/explore">
+                    <MenuItem onClick={this.handleMobileMenuClose}>
+                        <Link
+                            underline="none"
+                            className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                            onClick={this.handleExploreOpen}
+                            >
+                                <Button disableRipple={true} disableFocusRipple={true} color="black">
+                                    <Help className={classes.leftIcon}/>
+                                    Help
+                                </Button>
+                        </Link>
+                    </MenuItem>
+                </Route>
                 <MenuItem onClick={this.handleMobileMenuClose}>
                     <Link
                         underline="none"
@@ -132,6 +163,25 @@ class Header extends React.Component {
             </Menu>
         );
 
+        const exploreHelpMenu = (
+            <div>
+                <Link
+                    underline="none"
+                    className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                    onClick={this.handleExploreOpen}
+                >
+                    <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                        <Help className={classes.leftIcon} />
+                        Help
+                    </Button>
+                </Link>
+                <ExploreHelp
+                    open={this.state.dialogOpen}
+                    handleClose={this.handleExploreClose}
+                />
+
+            </div>
+        )
         return (
             <div className={classes.root}>
                 <AppBar position="static" color="primary">
@@ -149,6 +199,7 @@ class Header extends React.Component {
                             />
                         </Link>
                         <div className={classes.sectionDesktop}>
+                            <Route exact path="/explore" render={() => exploreHelpMenu}/>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
