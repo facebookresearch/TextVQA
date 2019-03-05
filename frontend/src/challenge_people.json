@@ -1,0 +1,40 @@
+{
+    "people": [
+        {
+            "name": "Amanpreet Singh",
+            "organization": "Facebook AI Research",
+            "website": "https://apsdehal.in",
+            "img_url": "https://visualqa.org/static/img/aman.jpg"
+        },
+        {
+            "name": "Meet Shah",
+            "organization": "Facebook AI Research",
+            "website": "https://meetshah1995.github.io",
+            "img_url": "https://visualqa.org/static/img/meet.jpg"
+        },
+        {
+            "name": "Xinlei Chen",
+            "organization": "Facebook AI Research",
+            "website": "https://xinlei.xyz",
+            "img_url": "https://visualqa.org/static/img/xinlei.jpg"
+        },
+        {
+            "name": "Dhruv Batra",
+            "organization": "Facebook AI Research, Georgia Tech",
+            "website": "https://www.cc.gatech.edu/~dbatra/",
+            "img_url": "https://visualqa.org/static/img/dhruv.jpg"
+        },
+        {
+            "name": "Devi Parikh",
+            "organization": "Facebook AI Research, Georgia Tech",
+            "website": "https://www.cc.gatech.edu/~parikh/",
+            "img_url": "https://visualqa.org/static/img/devi.jpg"
+        },
+        {
+            "name": "Marcus Rohrbach",
+            "organization": "Facebook AI Research",
+            "website": "rohrbach.vision",
+            "img_url": "https://visualqa.org/static/img/marcus.jpg"
+        }
+    ]
+}
