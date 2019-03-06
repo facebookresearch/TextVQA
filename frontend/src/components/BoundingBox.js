@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
 class BoundingBox extends Component {
-    colors = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8',
-              '#42d4f4', '#f032e6',
-              '#469990', '#9A6324', '#800000', '#aaffc3',
-              '#000075', '#000000', '#911eb4'];
+    colors = ['#e6194B', '#3cb44b', '#ffe119',
+              '#f032e6', '#9A6324', '#800000', '#42d4f4',
+              '#911eb4'];
 
     getColor(word) {
         const char = word.charCodeAt(0);
@@ -36,9 +35,9 @@ class BoundingBox extends Component {
             }
             const { centerShiftX, centerShiftY, newWidth, newHeight } = newData;
             ctx.font = "12px Lato";
-
+            ctx.fontWeight = "bold";
             for(const idx in this.props.boxes) {
-                const box = this.props.boxes[idx];
+                const box = JSON.parse(JSON.stringify(this.props.boxes[idx]));
                 box.coords[0] *= newWidth;
                 box.coords[1] *= newHeight;
                 box.coords[2] *= newWidth;
@@ -49,6 +48,7 @@ class BoundingBox extends Component {
                 ctx.strokeStyle = ctx.fillStyle;
 
                 ctx.rotate(box.rotation * Math.pi / 180);
+                ctx.lineWidth = 2;
                 ctx.strokeRect(...box.coords);
 
                 ctx.fillText(box.word, box.coords[0], box.coords[1]);
@@ -75,7 +75,7 @@ class BoundingBox extends Component {
                       img.height*ratio);
 
         if (this.props.showBoxes) {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
             ctx.fillRect(centerShiftX, centerShiftY, img.width*ratio,
                         img.height*ratio);
         }
@@ -88,9 +88,9 @@ class BoundingBox extends Component {
 
     render() {
         return(
-            <div>
+            <p>
               <canvas ref="canvas" />
-            </div>
+            </p>
         )
     }
 }
