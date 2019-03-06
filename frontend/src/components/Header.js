@@ -105,7 +105,7 @@ class Header extends React.Component {
                             className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                             onClick={this.handleExploreOpen}
                             >
-                                <Button disableRipple={true} disableFocusRipple={true} color="black">
+                                <Button disableRipple={true} disableFocusRipple={true} color="default">
                                     <Help className={classes.leftIcon}/>
                                     Help
                                 </Button>
@@ -118,7 +118,7 @@ class Header extends React.Component {
                         className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                         href="download"
                     >
-                            <Button disableRipple={true} disableFocusRipple={true} color="black">
+                            <Button disableRipple={true} disableFocusRipple={true} color="default">
                                 <CloudDownload className={classes.leftIcon}/>
                                 Download
                             </Button>
@@ -130,7 +130,7 @@ class Header extends React.Component {
                         className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                         href="challenge"
                     >
-                            <Button disableRipple={true} disableFocusRipple={true} color="black">
+                            <Button disableRipple={true} disableFocusRipple={true} color="default">
                                 <Equalizer className={classes.leftIcon}/>
                                 Challenge
                             </Button>
@@ -142,7 +142,7 @@ class Header extends React.Component {
                         className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                         href="paper"
                     >
-                            <Button disableRipple={true} disableFocusRipple={true} color="black">
+                            <Button disableRipple={true} disableFocusRipple={true} color="default">
                                 <Description className={classes.leftIcon}/>
                                 Paper
                             </Button>
@@ -154,7 +154,7 @@ class Header extends React.Component {
                         className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                         href="explore"
                     >
-                            <Button disableRipple={true} disableFocusRipple={true} color="black">
+                            <Button disableRipple={true} disableFocusRipple={true} color="default">
                                 <Explore className={classes.leftIcon}/>
                                 Explore
                             </Button>

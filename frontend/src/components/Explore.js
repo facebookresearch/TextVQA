@@ -215,6 +215,7 @@ class Explore extends Component {
                         "width": "90%",
                         "textAlign": "center"
                     }}
+                    dialogEnabled={true}
                 />
             </Grid>
         </ReactiveBase>
