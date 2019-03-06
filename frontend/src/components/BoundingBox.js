@@ -23,6 +23,7 @@ class BoundingBox extends Component {
         this.fitToContainer(canvas);
 
         const ctx = canvas.getContext("2d");
+        const isDialog = this.props.isDialog;
         const img = new Image();
         img.src = this.props.imageUrl;
 
@@ -35,6 +36,11 @@ class BoundingBox extends Component {
             }
             const { centerShiftX, centerShiftY, newWidth, newHeight } = newData;
             ctx.font = "12px Lato";
+
+            if (isDialog) {
+                ctx.font = "16px Lato";
+            }
+
             ctx.fontWeight = "bold";
             for(const idx in this.props.boxes) {
                 const box = JSON.parse(JSON.stringify(this.props.boxes[idx]));
