@@ -141,7 +141,7 @@ const Challenge = (props) => {
                         <Typography variant="subtitle1" align="left">
                         The winning team gets <Link href="https://cloud.google.com/">
                          Google Cloud Platform
-                        </Link> credits worth $10k!
+                        </Link> credits worth $10k, thanks to Google Cloud Platform!
                         </Typography>
                     </Grid>
                     <Grid item className={props.classes.headings} xs={12}>
@@ -249,14 +249,6 @@ const Challenge = (props) => {
                                     <TableCell align="left">public (optional)</TableCell>
                                 </TableRow>
                             </TableBody>
-                            <TableBody>
-                                <TableRow>
-                                    <TableCell><b>test-challenge</b></TableCell>
-                                    <TableCell align="left">5 total</TableCell>
-                                    <TableCell align="left">To be Announced at CVPR 2019</TableCell>
-                                    <TableCell align="left">private, to be announced at CVPR 2019</TableCell>
-                                </TableRow>
-                            </TableBody>
                         </Table>
                         <br/>
                     </Grid>
@@ -266,12 +258,16 @@ const Challenge = (props) => {
                         Please use <b>validation</b> split of TextVQA 0.5 for <b>val</b> phase and <b>test</b> split
                         for <b>test-std</b> phase.
                         While answers are already provided for the <b>val</b> set, this phase is useful for sanity checking result format
-                        without wasting submissions in the other phases. For the <b>test-std</b> and <b>test-challenge</b> phases, the results must be submitted on the full set.
+                        without wasting submissions in the other phases. For the <b>test-std</b> phase,
+                        the results must be submitted on the full set.
+                        Submissions to <b>test-std</b> phase are considered entries into the challenge.
                         By default, the submissions for <b>test-std</b> phase are private but can be voluntarily
-                        released to the public leaderboard, with a limit of one public leaderboard entry per team.
-                        Submissions to <b>test-challenge</b> phase are considered entries into the challenge.
-                        For multiple submissions to <b>test-challenge</b>, the approach with
-                        the highest test-std accuracy will be used.
+                            released to the public leaderboard, with a limit of one public leaderboard entry per team.
+                            At the end of the challenge, the entry with best accuracy from each team will
+                            be made public automatically and will be used for challenge rankings. We will contact
+                        top teams to voluntarily present at <Link href="https://visualqa.org/workshop.html">
+                        VQA and VisualDialog Workshop, CVPR 2019</Link>.
+
                         </Typography>
                         <br/>
                         <Typography variant="subtitle1" align="left">
@@ -367,20 +363,6 @@ const Challenge = (props) => {
                     </Grid>
                     <Grid item xs={12}>
                         <Divider />
-                    </Grid>
-                    <Grid item className={props.classes.headings} xs={12}>
-                        <Typography variant="h4" align="left">
-                            Sponsors
-                        </Typography>
-                    </Grid>
-                    <Grid item className={props.classes.versionNumber} xs={12} md={12} lg={12}>
-                        <Grid item xs={3} md={3} lg={2}>
-                            <img
-                                className={props.classes.bannerLogo}
-                                srcSet="assets/images/gcp_logo.svg"
-                                alt="Google Cloud Platform"
-                            />
-                        </Grid>
                     </Grid>
 
                 </Grid>
