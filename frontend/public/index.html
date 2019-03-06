@@ -39,6 +39,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <script type="text/javascript">
+      // Redirect for github.io website
+      (function(l) {
+        if (window.location.href.indexOf('TextVQA') !== -1) {
+          var splits = window.location.href.split('/');
+          splits = splits.slice(splits.indexOf('TextVQA') + 1);
+          splits = ['https://textvqa.org'].concat(splits);
+          splits = splits.join('/');
+          window.location.href = splits;
+       }
+      }(window.location));
+
       // Taken from https://github.com/rafrex/spa-github-pages
       (function(l) {
         if (l.search) {
