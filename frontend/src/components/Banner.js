@@ -9,6 +9,7 @@ import { ReactiveList } from '@appbaseio/reactivesearch';
 import Grid from '@material-ui/core/Grid'
 
 import BoundingBox from './BoundingBox';
+import SampleDialog from './SampleDialog';
 
 const styles = theme => ({
     gridItem: {
@@ -28,12 +29,32 @@ const styles = theme => ({
 
 class Banner extends Component {
     seed = Math.round(Math.random() * 10000);
-    state = {render: 0};
+    state = {
+        render: 0,
+        currentDialog: -1
+    };
     vars = {
         nChunks: null,
         originalChunks: [],
-        originalLen: 0
+        originalLen: 0,
+        currentResult: null,
+        currentMaxAnswer: null,
+        currentBoxes: null
     };
+
+    handleDialogOpen = (data) => {
+        this.vars.currentMaxAnswer = data['currentMaxAnswer'];
+        this.vars.currentBoxes = data['currentBoxes'];
+        this.vars.currentResult = data['currentResult'];
+        this.setState({
+            currentDialog: data['currentDialog']
+        });
+    }
+    handleDialogClose = () => {
+        this.setState({
+            currentDialog: -1
+        });
+    }
 
     getWidthForColumn = () => {
         // NOTE: Keep this is in this order.
@@ -171,8 +192,17 @@ class Banner extends Component {
             <div
                 key={cardIdx + this.seed}
                 className={this.props.classes.gridItem}
+                onClick={() => this.handleDialogOpen({
+                    currentDialog: cardIdx + this.seed,
+                    currentBoxes: boxes,
+                    currentResult: result,
+                    currentMaxAnswer: maxAnswer
+                })}
             >
-                <Card key={cardIdx} className={this.props.classes.card}>
+                <Card
+                    key={cardIdx}
+                    className={this.props.classes.card}
+                >
                     <BoundingBox
                         showBoxes={this.props.showOCRBoxes}
                         imageUrl={result.flickr_300k_url}
@@ -213,6 +243,16 @@ class Banner extends Component {
                     renderAllData={this.renderCardComponents}
                     style={this.props.style || {}}
                 />
+                {this.props.dialogEnabled ?
+                    <SampleDialog
+                        maxAnswer={this.vars.currentMaxAnswer}
+                        result={this.vars.currentResult}
+                        showOCRBoxes={this.props.showOCRBoxes}
+                        boxes={this.vars.currentBoxes}
+                        open={this.state.currentDialog !== -1}
+                        handleClose={this.handleDialogClose}
+                    /> : ''
+                }
             </Grid>
         );
     }
