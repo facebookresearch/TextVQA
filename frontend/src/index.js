@@ -1,3 +1,4 @@
+// Copyright (c) Facebook, Inc. and its affiliates.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/browser';

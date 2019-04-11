@@ -1,3 +1,4 @@
+// Copyright (c) Facebook, Inc. and its affiliates.
 import React, { Component } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route } from "react-router-dom";

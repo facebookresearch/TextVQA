@@ -1,3 +1,4 @@
+// Copyright (c) Facebook, Inc. and its affiliates.
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';

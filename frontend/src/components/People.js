@@ -1,3 +1,4 @@
+// Copyright (c) Facebook, Inc. and its affiliates.
 import React from 'react';
 import Link from '@material-ui/core/Link';
 

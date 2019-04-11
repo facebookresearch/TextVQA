@@ -1,3 +1,4 @@
+// Copyright (c) Facebook, Inc. and its affiliates.
 import React, { Component } from 'react';
 
 class BoundingBox extends Component {

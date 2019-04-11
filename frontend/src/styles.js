@@ -1,3 +1,4 @@
+// Copyright (c) Facebook, Inc. and its affiliates.
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
