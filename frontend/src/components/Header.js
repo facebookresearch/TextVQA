@@ -7,13 +7,15 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import MenuList from '@material-ui/core/MenuList';
 import IconButton from '@material-ui/core/IconButton';
 import Explore from '@material-ui/icons/Explore';
 import CloudDownload from '@material-ui/icons/CloudDownload';
 import Help from '@material-ui/icons/Help';
 import Equalizer from '@material-ui/icons/Equalizer';
 import Description from '@material-ui/icons/Description';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import MoreVert from '@material-ui/icons/MoreVert';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import theme from '../styles';
@@ -90,6 +92,21 @@ class Header extends React.Component {
         const { mobileMoreAnchorEl } = this.state;
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+        const helpMobileMenuItem = (
+            <MenuItem onClick={this.handleMobileMenuClose}>
+                <Link
+                    underline="none"
+                    className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                    onClick={this.handleExploreOpen}
+                >
+                    <Button disableRipple={true} disableFocusRipple={true} color="default">
+                        <Help className={classes.leftIcon} />
+                        Help
+                    </Button>
+                </Link>
+            </MenuItem>
+        );
+
         const renderMobileMenu = (
             <Menu
                 anchorEl={mobileMoreAnchorEl}
@@ -98,68 +115,59 @@ class Header extends React.Component {
                 open={isMobileMenuOpen}
                 onClose={this.handleMenuClose}
             >
-                <Route exact path="/explore">
-                    <MenuItem onClick={this.handleMobileMenuClose}>
-                        <Link
-                            underline="none"
-                            className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                            onClick={this.handleExploreOpen}
-                            >
-                                <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                    <Help className={classes.leftIcon}/>
-                                    Help
-                                </Button>
-                        </Link>
-                    </MenuItem>
-                </Route>
-                <MenuItem onClick={this.handleMobileMenuClose}>
-                    <Link
-                        underline="none"
-                        className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                        href="download"
-                    >
-                            <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                <CloudDownload className={classes.leftIcon}/>
-                                Download
-                            </Button>
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={this.handleMobileMenuClose}>
-                    <Link
-                        underline="none"
-                        className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                        href="challenge"
-                    >
-                            <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                <Equalizer className={classes.leftIcon}/>
-                                Challenge
-                            </Button>
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={this.handleMobileMenuClose}>
-                    <Link
-                        underline="none"
-                        className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                        href="paper"
-                    >
-                            <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                <Description className={classes.leftIcon}/>
-                                Paper
-                            </Button>
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={this.handleMobileMenuClose}>
-                    <Link
-                        underline="none"
-                        className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                        href="explore"
-                    >
-                            <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                <Explore className={classes.leftIcon}/>
-                                Explore
-                            </Button>
-                    </Link>
-                </MenuItem>
+                <ClickAwayListener onClickAway={this.handleMobileMenuClose}>
+                    <MenuList>
+                        <Route exact path="/explore" render={() => helpMobileMenuItem}/>
+                        <MenuItem onClick={this.handleMobileMenuClose}>
+                            <Link
+                                underline="none"
+                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                href="dataset"
+                                >
+                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                        <CloudDownload className={classes.leftIcon}/>
+                                        Dataset
+                                    </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={this.handleMobileMenuClose}>
+                            <Link
+                                underline="none"
+                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                href="challenge"
+                                >
+                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                        <Equalizer className={classes.leftIcon}/>
+                                        Challenge
+                                    </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={this.handleMobileMenuClose}>
+                            <Link
+                                underline="none"
+                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                href="paper"
+                                >
+                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                        <Description className={classes.leftIcon}/>
+                                        Paper
+                                    </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={this.handleMobileMenuClose}>
+                            <Link
+                                underline="none"
+                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                href="explore"
+                                >
+                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                        <Explore className={classes.leftIcon}/>
+                                        Explore
+                                    </Button>
+                            </Link>
+                        </MenuItem>
+                    </MenuList>
+                </ClickAwayListener>
             </Menu>
         );
 
@@ -223,11 +231,11 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href="download"
+                                href="dataset"
                             >
                                     <Button disableRipple={true} disableFocusRipple={true} color="inherit">
                                         <CloudDownload className={classes.leftIcon}/>
-                                        Download
+                                        Dataset
                                     </Button>
                             </Link>
                             <Link
@@ -243,7 +251,7 @@ class Header extends React.Component {
                         </div>
                         <div className={classes.sectionMobile}>
                             <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                                <MoreIcon />
+                                <MoreVert />
                             </IconButton>
                         </div>
                         {renderMobileMenu}
