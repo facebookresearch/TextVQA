@@ -13,6 +13,12 @@
             "img_url": "https://visualqa.org/static/img/meet.jpg"
         },
         {
+            "name": "Vivek Natarajan",
+            "organization": "",
+            "website": "",
+            "img_url": "https://visualqa.org/static/img/vivek.jpg"
+        },
+        {
             "name": "Xinlei Chen",
             "organization": "Facebook AI Research",
             "website": "https://xinlei.xyz",
@@ -33,7 +39,7 @@
         {
             "name": "Marcus Rohrbach",
             "organization": "Facebook AI Research",
-            "website": "rohrbach.vision",
+            "website": "https://rohrbach.vision",
             "img_url": "https://visualqa.org/static/img/marcus.jpg"
         }
     ]

@@ -65,6 +65,21 @@ const styles = theme => ({
             color: theme.palette.primary.main,
             textDecoration: 'none'
         }
+    },
+    preParent: {
+        backgroundColor: '#eee',
+        border: '1px solid #ddd',
+        borderRadius: '2px',
+        '& pre': {
+            whiteSpace: 'pre-wrap',
+        },
+        '& span': {
+            padding: '1em',
+        },
+        '& code': {
+            fontSize: '12px',
+            color: '#000'
+        }
     }
 });
 
@@ -225,7 +240,7 @@ class Home extends React.Component {
                                         </Link>
                                     </Grid>
                                     <Grid item xs={6} sm={6} md={3}>
-                                        <Link href="download">
+                                        <Link href="dataset">
                                             <Button variant="contained" color="primary">
                                                 Download
                                             </Button>
@@ -246,7 +261,7 @@ class Home extends React.Component {
                         item
                         xs={10}
                         md={8}
-                        lg={6}
+                        lg={7}
                         className={classes.people}
                     >
                         <Grid container justify="center" alignContent="center">
@@ -269,10 +284,11 @@ class Home extends React.Component {
                                             gutterBottom
                                             align="left"
                                         >
-                                            TextVQA requires models to read and reason about questions based on text in images.
-                                            Specifically, given an image, model needs to answer a question
-                                            which will require reading and reasoning on text present in it.
-                                        </Typography>
+                                            TextVQA requires models to read and reason about text in images
+                                            to answer questions about them. Specifically, models need to
+                                            incorporate a new modality of text present in the images and
+                                            reason over it to answer TextVQA questions.
+                                            </Typography>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -324,7 +340,50 @@ class Home extends React.Component {
                                         variant="h4"
                                         align="left"
                                     >
-                                        Citation
+                                        News
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        className={classes.sectionHeader}
+                                        variant="subtitle1"
+                                        align="left"
+                                    >
+                                        Join our <Link href="https://groups.google.com/forum/#!forum/textvqa">Google Group</Link> for TextVQA release updates and announcements.
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <ul className={classes.ulList}>
+                                        {news.news.map((obj, idx) => (
+                                            <li key={idx}>
+                                                <Typography
+                                                    align="left"
+                                                    variant="subtitle1"
+                                                >
+                                                    <span>[{obj.date}] </span>
+                                                    <span className={classes.hrefGreenColor} dangerouslySetInnerHTML={{ __html: obj.news }} />
+                                                </Typography>
+                                            </li>
+
+                                        ))}
+                                    </ul>
+                                </Grid>
+                            </Grid>
+                        </div>
+
+                        <div className={classes.people}>
+                            <Grid
+                                container
+                                justify="flex-start"
+                                spacing={16}
+                            >
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        className={classes.sectionHeader}
+                                        variant="h4"
+                                        align="left"
+                                    >
+                                        Challenge
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} className={classes.gridItem}>
@@ -332,9 +391,8 @@ class Home extends React.Component {
                                         variant="subtitle1"
                                         align="left"
                                         >
-                                        Please cite using <Link href="bibtex.txt">
-                                        this BiBTeX
-                                        </Link> if you use TextVQA in your work.
+                                        TextVQA Challenge 2019 is live! See more details
+                                        on the <Link href="challenge">challenge page</Link>.
                                     </Typography>
                                 </Grid>
                             </Grid>
@@ -351,24 +409,31 @@ class Home extends React.Component {
                                         variant="h4"
                                         align="left"
                                     >
-                                        News
+                                        Citation
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} className={classes.gridItem}>
-                                    <ul className={classes.ulList}>
-                                        {news.news.map((obj, idx) => (
-                                            <li key={idx}>
-                                                <Typography
-                                                    align="left"
-                                                    variant="subtitle1"
-                                                >
-                                                <span>[{obj.date}] </span>
-                                                <span className={classes.hrefGreenColor} dangerouslySetInnerHTML={{__html: obj.news}}/>
-                                                </Typography>
-                                            </li>
-
-                                        ))}
-                                    </ul>
+                                    <Typography
+                                        variant="subtitle1"
+                                        align="left"
+                                        >
+                                        <b>Title</b>: Towards VQA models that can read<br/>
+                                        <b>Authors</b>: Amanpreet Singh, Vivek Natarajan, Meet Shah, Yu Jiang, Xinlei Chen, Dhruv Batra, Devi Parikh, and Marcus Rohrbach<br/>
+                                        <b>Venue</b>: CVPR 2019 (<Link href="paper">Paper</Link>)<br/><br/>
+                                        If you use TextVQA, please cite <Link href="bibtex.txt">
+                                        using this
+                                        </Link>.
+                                    </Typography>
+                                    <br />
+                                    {/* <Typography component="span" align="left" className={classes.preParent}>
+                                        <Typography component="pre" dangerouslySetInnerHTML={{
+                                            __html: '@InProceedings{singh2019textvqa, \n\ttitle={Towards VQA models that can read},' +
+                                                    '\n\tauthor={Singh, Amanpreet and Natarajan, Vivek and Shah, Meet and Jiang, Yu ' +
+                                                    'and Chen, Xinlei and Batra, Dhruv and Parikh, Devi and Rohrbach, Marcus},' +
+                                                    '\n\tbooktitle = {The IEEE Conference on Computer Vision and Pattern Recognition ' +
+                                                    '(CVPR)}, \n\tyear = {2019}\n}'
+                                        }} />
+                                    </Typography> */}
                                 </Grid>
                             </Grid>
                         </div>
@@ -388,6 +453,29 @@ class Home extends React.Component {
                             <div className={classes.container}/>
                             <People/>
                         </div>
+                        <div className={classes.people}>
+                            <Grid container justify="flex-start" spacing={16}>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        className={classes.sectionHeader}
+                                        variant="h4"
+                                        align="left"
+                                    >
+                                        Contact
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        variant="subtitle1"
+                                        align="left"
+                                    >
+                                        Reach us out at <Link href="mailto:textvqa@fb.com">textvqa@fb.com</Link> for any questions, suggestions and feedback.
+                                    </Typography>
+
+                                </Grid>
+                            </Grid>
+
+                        </div>
 
                         <Divider className={classes.people}/>
                         <Grid
@@ -398,21 +486,25 @@ class Home extends React.Component {
                             className={classes.sectionHeader}
                         >
                             <Grid item xs={6} md={6} lg={4}>
-                                <img
-                                    className={classes.bannerLogo}
-                                    style={{
-                                        marginTop: '5%'
-                                    }}
-                                    srcSet="assets/images/fair_logo.png"
-                                    alt="Facebook Artificial Intelligence Research"
-                                />
+                                <Link href="https://research.fb.com/category/facebook-ai-research/">
+                                    <img
+                                        className={classes.bannerLogo}
+                                        style={{
+                                            marginTop: '5%'
+                                        }}
+                                        srcSet="assets/images/fair_logo.png"
+                                        alt="Facebook Artificial Intelligence Research"
+                                    />
+                                </Link>
                             </Grid>
                             <Grid item xs={3} md={3} lg={2}>
-                                <img
-                                    className={classes.bannerLogo}
-                                    srcSet="assets/images/gt_logo.png"
-                                    alt="Georgia Tech"
-                                />
+                                <Link href="https://www.gatech.edu/">
+                                    <img
+                                        className={classes.bannerLogo}
+                                        srcSet="assets/images/gt_logo.png"
+                                        alt="Georgia Tech"
+                                    />
+                                </Link>
                             </Grid>
                         </Grid>
                     </Grid>

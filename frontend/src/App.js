@@ -26,6 +26,7 @@ class App extends Component {
                 <Route path="/explore" component={Explore} />
                 <Route path="/challenge" component={Challenge} />
                 <Route path="/download" component={Download} />
+                <Route path="/dataset" component={Download} />
                 <Route path="/paper" component={Paper} />
               </div>
           </div>
