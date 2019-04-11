@@ -20,6 +20,11 @@ const styles = (theme) => ({
     card: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center'
+    },
+    flickrUrls: {
+        [theme.breakpoints.down('md')]: {
+            fontSize: '0.68em'
+        }
     }
 });
 
@@ -27,11 +32,10 @@ const SampleDialog = (props) => {
     if (!props.result) {
         return ''
     }
-    const { fullScreen } = props;
+
     return (
         <div>
             <Dialog
-                fullScreen={fullScreen}
                 open={props.open}
                 fullWidth={true}
                 maxWidth="lg"
@@ -41,7 +45,7 @@ const SampleDialog = (props) => {
             >
 
                 <DialogActions>
-                    <Typography variant="caption" align="left">
+                    <Typography className={props.classes.flickrUrls} variant="caption" align="left">
                         {props.result.flickr_300k_url.length ?
                             <Link href={props.result.flickr_300k_url}>Flickr Thumbnail</Link> :
                             ''}
@@ -66,6 +70,7 @@ const SampleDialog = (props) => {
                         isDialog={true}
                         imageUrl={props.result.flickr_300k_url}
                         boxes={props.boxes}
+                        rotation={props.result.rotation}
                     />
                 </DialogContent>
                 <DialogTitle id="alert-dialog-title">
