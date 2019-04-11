@@ -2,11 +2,11 @@
     "news": [
         {
             "date": "Mar 2019",
-            "news": "<a href='challenge'>TextVQA Challenge 2019</a> announced on <a href='download'>TextVQA 0.5 dataset</a>!"
+            "news": "<a href='challenge'>TextVQA Challenge 2019</a> announced on the <a href='download'>TextVQA 0.5 dataset</a>!"
         },
         {
             "date": "Mar 2019",
-            "news": "<a href='download'>TextVQA dataset v0.5</a> containing 45,336 questions released."
+            "news": "<a href='download'>TextVQA v0.5</a> containing 45,336 questions released."
         }
     ]
 }
