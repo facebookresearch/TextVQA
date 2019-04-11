@@ -53,6 +53,9 @@ const styles = (theme) => ({
             color: '#000'
         }
     },
+    evalAILink: {
+        wordBreak: 'break-word'
+    },
     teaserImage: {
         width: '100%',
     },
@@ -117,16 +120,21 @@ const Challenge = (props) => {
 
                         <Typography variant="subtitle1" className={props.classes.headings}  align="left">
                         TextVQA requires models to read and reason about text in an image to answer questions based on them.
-                        In order to perform well on this task, models need to first detect and extract out text in the images.
-                        Model then using its reasoning capability needs to answer a question grounded in text in the image.
+                        In order to perform well on this task, models need to first detect and read text in the images.
+                        Models then need to reason about this to answer the question.
                         </Typography>
                         <Typography variant="subtitle1" className={props.classes.headings} align="left">
-                        Current state-of-the-art models fail to answer questions included in TextVQA as they don't have text reading
-                        capabilities. As shown in the examples in the image, the answers predicted by the state-of-the-art model are random
-                        with no basis when the questions involve reasoning or reading the text.
+                        Current state-of-the-art models fail to answer questions in TextVQA because they do not
+                        have text reading and reasoning capabilities.
+                        See the examples in the image to compare ground truth answers and
+                        corresponding predictions by a state-of-the-art model.
                         </Typography>
                         <Typography variant="subtitle1" className={props.classes.headings} align="left">
-                        Challenge link: <Link href="">add link here later</Link>
+                            Challenge
+                            link: <Link
+                                className={props.classes.evalAILink}
+                                href="https://evalai.cloudcv.org/web/challenges/challenge-page/244/">
+                            https://evalai.cloudcv.org/web/challenges/challenge-page/244/</Link>
                         </Typography>
                     </Grid>
                     <Grid item className={props.classes.title} xs={12} md={4} lg={4}>
@@ -140,8 +148,8 @@ const Challenge = (props) => {
                     <Grid item className={props.classes.versionNumber} xs={12} md={8} lg={8}>
                         <Typography variant="subtitle1" align="left">
                         The winning team gets <Link href="https://cloud.google.com/">
-                         Google Cloud Platform
-                        </Link> credits worth $10k, thanks to Google Cloud Platform!
+                         Google Cloud Platform (GCP)
+                        </Link> credits worth $10k. Thank you for the generosity GCP!
                         </Typography>
                     </Grid>
                     <Grid item className={props.classes.headings} xs={12}>
@@ -153,23 +161,26 @@ const Challenge = (props) => {
                         <Typography variant="subtitle1" align="left">
                             <Typography component="span" className={props.classes.spanTypography} color="primary">
                                 4 March 2019
-                            </Typography> - Challenge announced.
+                            </Typography> &mdash; Challenge announced.
                         </Typography>
                         <Typography variant="subtitle1" align="left">
                             <Typography component="span" className={props.classes.spanTypography} color="primary">
                                 18 May 2019 (23:59:59 GMT)
-                            </Typography>
-                            - Submission deadline for participants.
+                            </Typography> &mdash; Submission deadline for participants.
                         </Typography>
                         <Typography variant="subtitle1" align="left">
                             <Typography component="span" className={props.classes.spanTypography} color="primary">
-                                June 2019
-                            </Typography> - Winners' announcment at the <Link href="https://visualqa.org/workshop.html">
-                            VQA and VisualDialog Workshop, CVPR 2019.</Link>
+                                17 June 2019
+                            </Typography> &mdash; Winners' announcment at the <Link href="https://visualqa.org/workshop.html">
+                                Visual Question Answering and Dialog Workshop, CVPR 2019</Link>.
                         </Typography>
                         <br/>
                         <Typography variant="subtitle1" align="left">
-                        For questions about the challenge, email us at <Link href="mailto:textvqa@fb.com">
+                         Winners will be invited to give a short talk at the workshop. <br/>
+                        For questions about the challenge,
+                        visit challenge's <Link href="https://evalai-forum.cloudcv.org/c/text-vqa-2019">discussion board</Link>,
+                        join our <Link href="https://groups.google.com/forum/#!forum/textvqa">Google Group</Link> or
+                        email us at <Link href="mailto:textvqa@fb.com">
                         textvqa@fb.com
                         </Link>
                         </Typography>
@@ -184,24 +195,29 @@ const Challenge = (props) => {
                     </Grid>
                     <Grid item className={props.classes.versionNumber} xs={12} md={12} lg={12}>
                         <Typography variant="subtitle1" align="left">
-                        You can find detailed description and download links for the dataset at <Link href="download">download</Link> page.
+                        You can find a detailed description and the download links for the dataset at the <Link href="dataset">download</Link> page.
                         </Typography>
                         <br/>
                         <Typography variant="subtitle1" align="left">
-                        The challenge will be conducted on v0.5 of the <Link href="download">TextVQA dataset</Link>, which is
+                        The challenge will be conducted on v0.5 of the <Link href="dataset">TextVQA dataset</Link>, which is
                         based on <Link href="https://storage.googleapis.com/openimages/web/index.html">OpenImages</Link>.
                         <br/>
-                        TextVQA v0.5 contains 45,336 questions based on 29,634 images. The v0.5 training set contains 34,602 questions
-                        based on 22,960 images from OpenImages training set. The v0.5 validation set contains 5,000 questions based on
-                        3,321 images from OpenImages training set while the v0.5 test-std set contains 5,734 questions based on 3,353
-                        images from OpenImages test set.
+                        TextVQA v0.5 contains 45,336 questions based on 28,408 images. The v0.5 training set contains 34,602 questions
+                            based on 21,953 images from OpenImages' training set. The v0.5 validation set contains 5,000 questions based on
+                            3,166 images from OpenImages' training set while the v0.5 test-std set contains 5,734 questions based on 3,289
+                            images from OpenImages' test set.
                         </Typography>
                         <br/>
                         <Typography variant="subtitle1" align="left">
-                        <b>LoRRA</b> model provided in our paper uses OCR tokens extracted via Rosetta system used inside Facebook.
+                        {/* <b>LoRRA</b> model provided in our paper uses OCR tokens extracted via Rosetta system used inside Facebook.
                         As the gap between upper bound of accuracy that can be achieved using OCR tokens from Rosetta
                         and LoRRA's accuracy is large, we provide these OCR tokens also as part of our dataset in belief
-                        that these tokens will help in pushing state-of-the-art on TextVQA.
+                        that these tokens will help in pushing state-of-the-art on TextVQA. */}
+                        To allow easier adoption, we also provide OCR tokens extracted
+                        using <Link href="https://code.fb.com/ai-research/rosetta-understanding-text-in-images-and-videos-with-machine-learning/">Rosetta</Link>.
+                        Participants are free to use these OCR tokens
+                        and/or use other systems/ways to read/understand
+                        the text in the images.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
@@ -217,7 +233,10 @@ const Challenge = (props) => {
                         Teams must register on <Link href="https://evalai.cloudcv.org/">EvalAI</Link> and create a team
                         for the challenge (<Link href="https://evalai.readthedocs.io/en/latest/participate.html">Quickstart</Link>)
                         <br/>
-                        The challenge page is available here: <Link href="">update with link</Link>
+                            The challenge page is available at: <Link
+                                className={props.classes.evalAILink}
+                                href="https://evalai.cloudcv.org/web/challenges/challenge-page/244/">
+                            https://evalai.cloudcv.org/web/challenges/challenge-page/244/</Link>
                         </Typography>
                         <Typography variant="subtitle1" align="left">
                         Challenge has two phases:
@@ -255,23 +274,24 @@ const Challenge = (props) => {
                     <Grid item className={props.classes.versionNumber} xs={12} md={12} lg={12}>
 
                         <Typography className={props.classes.headings} variant="subtitle1" align="left">
-                        Please use <b>validation</b> split of TextVQA 0.5 for <b>val</b> phase and <b>test</b> split
-                        for <b>test-std</b> phase.
-                        While answers are already provided for the <b>val</b> set, this phase is useful for sanity checking result format
+                        Please use the <b>validation</b> split of TextVQA 0.5 for the <b>val</b> phase and the <b>test</b> split
+                        for the <b>test-std</b> phase.
+                        While answers are already provided for the <b>validation</b> set, this phase is useful for sanity checking the result format
                         without wasting submissions in the other phases. For the <b>test-std</b> phase,
                         the results must be submitted on the full set.
                         Submissions to <b>test-std</b> phase are considered entries into the challenge.
-                        By default, the submissions for <b>test-std</b> phase are private but can be voluntarily
+                        By default, the submissions for the <b>test-std</b> phase are private but can be voluntarily
                             released to the public leaderboard, with a limit of one public leaderboard entry per team.
                             At the end of the challenge, the entry with best accuracy from each team will
-                            be made public automatically and will be used for challenge rankings. We will contact
-                        top teams to voluntarily present at <Link href="https://visualqa.org/workshop.html">
-                        VQA and VisualDialog Workshop, CVPR 2019</Link>.
+                            be made public automatically and will be used for the challenge rankings. We will contact
+                        the winning team to voluntarily present at the <Link href="https://visualqa.org/workshop.html">
+                        Visual Question Answering and Dialog Workshop, CVPR 2019</Link>.
 
                         </Typography>
                         <br/>
                         <Typography variant="subtitle1" align="left">
-                        It is not acceptable to create multiple accounts for a single team in order to bypass these limits.
+                        It is not acceptable to create multiple accounts for a single team in order to bypass
+                        the limits on number of submissions.
                         The exception to this is if a group is working on multiple unrelated methods,
                         in this case all sets of results can be submitted for evaluation.
                         Results must be submitted to the evaluation server by
@@ -301,7 +321,7 @@ const Challenge = (props) => {
                             </Typography>
                         </Typography>
                         <Typography className={props.classes.headings} variant="subtitle1" align="left">
-                            where <b>question_id</b> is question's unique id
+                            where <b>question_id</b> is a question's unique id
                             and <b>answer</b> is the prediction by your model for the question.
                             You can find an example submission file <Link href={sampleJSONLink}>here</Link>.
                             When submitting, teams should also include a method name,
@@ -312,7 +332,7 @@ const Challenge = (props) => {
                     <Grid item xs={12}>
                         <Divider />
                     </Grid>
-                    <Grid item className={props.classes.headings} xs={12}>
+                    <Grid id="evaluation" item className={props.classes.headings} xs={12}>
                         <Typography variant="h4" align="left">
                             Evaluation
                         </Typography>
@@ -334,7 +354,7 @@ const Challenge = (props) => {
                     </Grid>
 
                     <Grid item className={props.classes.versionNumber} xs={12} md={12} lg={12}>
-                        <People people={challengePeople.people}/>
+                        <People lgSize={3} people={challengePeople.people}/>
                     </Grid>
                     <Grid
                         container
