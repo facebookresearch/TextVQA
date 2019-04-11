@@ -63,7 +63,7 @@ class Banner extends Component {
             'xs': '100',
             'sm': '50',
             'md': '33',
-            'lg': '20'
+            'lg': '25'
         };
 
         let currentWidth = '100';
@@ -78,11 +78,14 @@ class Banner extends Component {
 
     chunkArray = (arr, nChunks) => {
         let isNewSearch = false;
-
-        if (this.vars.originalChunks.length > 0 &&
-            this.vars.originalChunks[0].length > 0 && this.vars.originalChunks[0][0] !== arr[0]) {
+        if (arr.length === 0) {
+            isNewSearch = true
+        } else if (this.vars.originalChunks.length > 0 &&
+            this.vars.originalChunks[0].length > 0 &&
+            this.vars.originalChunks[0][0].question_id !== arr[0].question_id) {
                 isNewSearch = true;
-            }
+        }
+
         if (this.vars.nChunks !== nChunks || isNewSearch) {
             this.vars.nChunks = nChunks;
             this.vars.originalChunks = [];
@@ -115,13 +118,16 @@ class Banner extends Component {
             return "";
         }
 
-        const cards = [...results.results, ...results.streamResults].map((result, idx) => {
-            return this.renderCardComponent(result, idx);
-        });
-
+        const finalResults = [...results.results, ...results.streamResults];
         const colWidth = this.getWidthForColumn();
         const numChunks = Math.floor(100 / colWidth);
-        const cardChunks = this.chunkArray(cards, numChunks);
+        const chunks = this.chunkArray(finalResults, numChunks);
+
+        const cardChunks = chunks.map((chunk, idx) => {
+            return chunk.map((result, idx) => {
+                return this.renderCardComponent(result, idx);
+            })
+        });
 
         const containerChunks = cardChunks.map((chunk, idx) => {
             return (
@@ -207,6 +213,7 @@ class Banner extends Component {
                         showBoxes={this.props.showOCRBoxes}
                         imageUrl={result.flickr_300k_url}
                         boxes={boxes}
+                        rotation={result.rotation}
                     />
                     <CardContent className={this.props.classes.cardContent}>
                         {
@@ -226,7 +233,31 @@ class Banner extends Component {
             </div>
         )
     }
+    formatResultsStats = (resultInfo) => {
+        return (
+            <Typography
+                className={this.props.classes.gridItem}
+                component="span"
+                align="center"
+            >
+                {resultInfo.totalResults} results found in {resultInfo.time}ms.<br/>
+                For more information on how to use search, please see "Help" in navigation bar.<br/>
+            </Typography>
+        );
+    }
 
+    noResultStats = (resultInfo) => {
+        return (
+            <Typography
+                className={this.props.classes.gridItem}
+                component="span"
+                align="center"
+            >
+                No results found.<br/>
+                For more information on how to use search, please see "Help" in navigation bar.<br/>
+            </Typography>
+        );
+    }
     render() {
         return (
             <Grid container direction="row" justify="center" alignItems="center">
@@ -236,9 +267,11 @@ class Banner extends Component {
                     title="Results"
                     from={0}
                     size={this.props.size || 25}
+                    renderResultStats={this.formatResultsStats}
                     pagination={this.props.pagination || false}
                     showResultStats={this.props.showResultStats}
                     loader={this.props.loader}
+                    renderNoResults={this.noResultStats}
                     react={this.props.reactValues}
                     renderAllData={this.renderCardComponents}
                     style={this.props.style || {}}
