@@ -54,12 +54,12 @@ class Explore extends Component {
 
         body[1] = JSON.stringify(queryParams)
         body = body.join('\n');
-        body = body.replace('"field":"set_name"', '"field":"set_name.keyword"');
-        body = body.replace('"field":"image_classes"', '"field":"image_classes.keyword"');
-        body = body.replace('"field":"question"', '"field":"question.keyword"');
-        body = body.replace('"field":"ocr_tokens"', '"field":"ocr_tokens.keyword"');
-        body = body.replace('"field":"answers"', '"field":"answers.keyword"');
-        query.body = body.toLowerCase();
+        body = body.replace('"field":"set_name"', '"field":"set_name"');
+        body = body.replace('"field":"image_classes"', '"field":"image_classes"');
+        body = body.replace('"field":"question"', '"field":"question"');
+        body = body.replace('"field":"ocr_tokens"', '"field":"ocr_tokens"');
+        body = body.replace('"field":"answers"', '"field":"answers"');
+        query.body = body;
         return query;
     }
 
@@ -76,7 +76,7 @@ class Explore extends Component {
     }
 
     render() {
-      return (
+        return (
           <ReactiveBase
             app={config.index_name}
             url={config.server_url}
@@ -95,7 +95,7 @@ class Explore extends Component {
                         dataField="question"
                         autosuggest={false}
                         categoryField="question"
-                        placeholder="Search for questions"
+                        placeholder="Search in the questions"
                         debounce={1000}
                         style={{
                             padding: "5px"
