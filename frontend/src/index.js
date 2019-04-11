@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/browser';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import * as config from './frontend_config.json';
+
+Sentry.init({
+ dsn: config.sentry_url
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
