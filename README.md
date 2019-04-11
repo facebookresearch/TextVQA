@@ -1,4 +1,4 @@
-# TextVQA website
+# TextVQA Wßebsite
 
 This project was created using `create-react-app`. To run it follow instructions below:
 
@@ -6,3 +6,8 @@ This project was created using `create-react-app`. To run it follow instructions
 - Install yarn through `npm install -g yarn`
 - Clone the repository and `yarn install` inside it.
 - Now run `yarn start` and you website should pop up in your browser.
+
+
+## LICENSE
+
+Find LICENSE in [LICENSE.md](LICENSE.md) file.
