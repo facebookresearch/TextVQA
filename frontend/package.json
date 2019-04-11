@@ -7,6 +7,7 @@
     "@appbaseio/reactivesearch": "^3.0.0-beta.3",
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
+    "@sentry/browser": "^4.6.4",
     "moment-timezone": "^0.5.23",
     "react": "^16.7.0",
     "react-countdown-now": "^2.1.0",
