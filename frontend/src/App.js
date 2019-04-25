@@ -11,6 +11,7 @@ import './App.css';
 import theme from './styles';
 import Challenge from './components/Challenge';
 import Download from './components/Download';
+import Code from './components/Code';
 import Paper from './components/Paper';
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
                 <Route path="/explore" component={Explore} />
                 <Route path="/challenge" component={Challenge} />
                 <Route path="/download" component={Download} />
+                <Route path="/code" component={Code} />
                 <Route path="/dataset" component={Download} />
                 <Route path="/paper" component={Paper} />
               </div>

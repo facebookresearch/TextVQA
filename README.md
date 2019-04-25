@@ -4,7 +4,7 @@ This project was created using `create-react-app`. To run it follow instructions
 
 - Install node's latest version. (Preferably, install through [nvm](https://github.com/creationix/nvm))
 - Install yarn through `npm install -g yarn`
-- Clone the repository and `yarn install` inside it.
+- Clone the repository and `cd frontend && yarn install` inside it.
 - Now run `yarn start` and you website should pop up in your browser.
 
 
