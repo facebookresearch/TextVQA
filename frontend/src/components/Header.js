@@ -16,6 +16,7 @@ import Help from '@material-ui/icons/Help';
 import Equalizer from '@material-ui/icons/Equalizer';
 import Description from '@material-ui/icons/Description';
 import MoreVert from '@material-ui/icons/MoreVert';
+import Code from '@material-ui/icons/Code';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
@@ -147,11 +148,23 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href="paper"
+                                href="https://arxiv.org/abs/1904.08920"
                                 >
                                     <Button disableRipple={true} disableFocusRipple={true} color="default">
                                         <Description className={classes.leftIcon}/>
                                         Paper
+                                    </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={this.handleMobileMenuClose}>
+                            <Link
+                                underline="none"
+                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                href="code"
+                                >
+                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                        <Code className={classes.leftIcon}/>
+                                        Code
                                     </Button>
                             </Link>
                         </MenuItem>
@@ -222,11 +235,21 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href="paper"
+                                href="https://arxiv.org/abs/1904.08920"
                             >
                                     <Button disableRipple={true} disableFocusRipple={true} color="inherit">
                                         <Description className={classes.leftIcon}/>
                                         Paper
+                                    </Button>
+                            </Link>
+                            <Link
+                                underline="none"
+                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                href="code"
+                            >
+                                    <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                                        <Code className={classes.leftIcon}/>
+                                        Code
                                     </Button>
                             </Link>
                             <Link

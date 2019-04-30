@@ -2,8 +2,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import CloudDownload from '@material-ui/icons/CloudDownload';
-import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
 
 const styles = (theme) => ({
@@ -37,13 +35,17 @@ const Paper = (props) => {
                     marginTop: '4em'
                 }}
             >
-            Code will be available on <Link
+            Code is available at <Link
                     underline="none"
                     className={[props.classes.buttonLink, props.classes.buttonsSide].join(' ')}
                     href="https://github.com/facebookresearch/pythia"
                 >
                 https://github.com/facebookresearch/pythia
-                </Link>. An announcement will be made in News section and mailing list.
+                </Link>.
+                <br/>
+                <br/>
+                Pythia is a module framework for multimodal (vision + language) research and can be used
+                as a starter point for working on TextVQA.
             </Grid>
         </Grid>
     )

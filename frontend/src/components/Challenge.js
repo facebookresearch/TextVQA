@@ -141,7 +141,21 @@ const Challenge = (props) => {
                     <Grid item className={props.classes.title} xs={12} md={4} lg={4}>
                         <img className={props.classes.teaserImage} srcSet="assets/images/teaser.png" alt="Teaser"/>
                     </Grid>
-                    <Grid item style={{marginTop: '-1em'}}className={props.classes.headings} xs={12}>
+                    <Grid item style={{marginTop: 0}} className={props.classes.headings} xs={12}>
+                        <Typography variant="h4" align="left">
+                        Starter Code
+                        </Typography>
+                    </Grid>
+                    <Grid item className={props.classes.versionNumber} xs={12} md={8} lg={8}>
+                        <Typography variant="subtitle1" align="left">
+                        The starter code for TextVQA challenge is available in <Link href="https://github.com/facebookresearch/pythia/">
+                         Pythia
+                        </Link>. Tutorial on how to submit a submission using <Link href="https://arxiv.org/pdf/1904.08920">LoRRA</Link> model is
+                        available in <Link href="https://learnpythia.readthedocs.io/en/latest/tutorials/challenge.html">documentation</Link>. LoRRA
+                        can be easily plugged to any VQA model to add text reading capabilities.
+                        </Typography>
+                    </Grid>
+                    <Grid item className={props.classes.headings} xs={12}>
                         <Typography variant="h4" align="left">
                         Prizes
                         </Typography>

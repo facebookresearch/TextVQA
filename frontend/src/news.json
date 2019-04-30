@@ -1,6 +1,14 @@
 {
     "news": [
         {
+            "date": "Apr 2019",
+            "news": "Starter code for <a href='challenge'>TextVQA challenge</a> and LoRRA are now available in <a href='https://github.com/facebookresearch/pythia'>Pythia's new version</a>!"
+        },
+        {
+            "date": "Apr 2019",
+            "news": "TextVQA paper 'Towards VQA Models That Can Read' is available on <a href='https://arxiv.org/abs/1904.08920'>arXiV</a>!"
+        },
+        {
             "date": "Mar 2019",
             "news": "<a href='challenge'>TextVQA Challenge 2019</a> announced on the <a href='download'>TextVQA 0.5 dataset</a>!"
         },

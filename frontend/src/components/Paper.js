@@ -40,7 +40,7 @@ const Paper = (props) => {
                 <Link
                     underline="none"
                     className={[props.classes.buttonLink, props.classes.buttonsSide].join(' ')}
-                    href="assets/paper/TextVQA.pdf"
+                    href="https://arxiv.org/abs/1904.08920"
                 >
                     <Button variant="contained" color="primary">
                         <CloudDownload className={props.classes.leftIcon} />
@@ -49,7 +49,7 @@ const Paper = (props) => {
                 </Link>
                 <embed
                     className={props.classes.embed}
-                    src="assets/paper/TextVQA.pdf"
+                    src="https://arxiv.org/pdf/1904.08920"
                     type="application/pdf"
                 />
             </Grid>
