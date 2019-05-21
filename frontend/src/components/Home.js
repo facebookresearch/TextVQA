@@ -227,7 +227,7 @@ class Home extends React.Component {
                                         </Link>
                                     </Grid>
                                     <Grid item xs={6} sm={6} md={3}>
-                                        <Link href="paper">
+                                        <Link href="https://arxiv.org/abs/1904.08920">
                                             <Button variant="contained" color="primary">
                                                 Paper
                                             </Button>
@@ -394,6 +394,32 @@ class Home extends React.Component {
                                         >
                                         TextVQA Challenge 2019 is live! See more details
                                         on the <Link href="challenge">challenge page</Link>.
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        </div>
+                        <div className={classes.people}>
+                            <Grid
+                                container
+                                justify="flex-start"
+                                spacing={16}
+                            >
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        className={classes.sectionHeader}
+                                        variant="h4"
+                                        align="left"
+                                    >
+                                        Code
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} className={classes.gridItem}>
+                                    <Typography
+                                        variant="subtitle1"
+                                        align="left"
+                                        >
+                                        Find the starter code for TextVQA and LoRRA
+                                        at <Link href="https://github.com/facebookresearch/pythia">https://github.com/facebookresearch/pythia</Link>.
                                     </Typography>
                                 </Grid>
                             </Grid>

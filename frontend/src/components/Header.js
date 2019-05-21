@@ -115,7 +115,7 @@ class Header extends React.Component {
                 anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                 open={isMobileMenuOpen}
-                onClose={this.handleMenuClose}
+                onClose={this.handleMobileMenuClose}
             >
                 <ClickAwayListener onClickAway={this.handleMobileMenuClose}>
                     <MenuList>
@@ -125,11 +125,11 @@ class Header extends React.Component {
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="dataset"
-                                >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                        <CloudDownload className={classes.leftIcon}/>
-                                        Dataset
-                                    </Button>
+                            >
+                                <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                    <CloudDownload className={classes.leftIcon}/>
+                                    Dataset
+                                </Button>
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={this.handleMobileMenuClose}>
@@ -137,11 +137,11 @@ class Header extends React.Component {
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="challenge"
-                                >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                        <Equalizer className={classes.leftIcon}/>
-                                        Challenge
-                                    </Button>
+                            >
+                                <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                    <Equalizer className={classes.leftIcon}/>
+                                    Challenge
+                                </Button>
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={this.handleMobileMenuClose}>
@@ -149,23 +149,23 @@ class Header extends React.Component {
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="https://arxiv.org/abs/1904.08920"
-                                >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                        <Description className={classes.leftIcon}/>
-                                        Paper
-                                    </Button>
+                            >
+                                <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                    <Description className={classes.leftIcon}/>
+                                    Paper
+                                </Button>
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={this.handleMobileMenuClose}>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href="code"
-                                >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                        <Code className={classes.leftIcon}/>
-                                        Code
-                                    </Button>
+                                href="https://github.com/facebookresearch/pythia"
+                            >
+                                <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                    <Code className={classes.leftIcon}/>
+                                    Code
+                                </Button>
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={this.handleMobileMenuClose}>
@@ -173,11 +173,11 @@ class Header extends React.Component {
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="explore"
-                                >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                        <Explore className={classes.leftIcon}/>
-                                        Explore
-                                    </Button>
+                            >
+                                <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                    <Explore className={classes.leftIcon}/>
+                                    Explore
+                                </Button>
                             </Link>
                         </MenuItem>
                     </MenuList>
@@ -227,50 +227,50 @@ class Header extends React.Component {
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="challenge"
                             >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="inherit">
-                                        <Equalizer className={classes.leftIcon}/>
-                                        Challenge
-                                    </Button>
+                                <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                                    <Equalizer className={classes.leftIcon}/>
+                                    Challenge
+                                </Button>
                             </Link>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="https://arxiv.org/abs/1904.08920"
                             >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="inherit">
-                                        <Description className={classes.leftIcon}/>
-                                        Paper
-                                    </Button>
+                                <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                                    <Description className={classes.leftIcon}/>
+                                    Paper
+                                </Button>
                             </Link>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href="code"
+                                href="https://github.com/facebookresearch/pythia"
                             >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="inherit">
-                                        <Code className={classes.leftIcon}/>
-                                        Code
-                                    </Button>
+                                <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                                    <Code className={classes.leftIcon}/>
+                                    Code
+                                </Button>
                             </Link>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="dataset"
                             >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="inherit">
-                                        <CloudDownload className={classes.leftIcon}/>
-                                        Dataset
-                                    </Button>
+                                <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                                    <CloudDownload className={classes.leftIcon}/>
+                                    Dataset
+                                </Button>
                             </Link>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
                                 href="explore"
                             >
-                                    <Button disableRipple={true} disableFocusRipple={true} color="inherit">
-                                        <Explore className={classes.leftIcon}/>
-                                        Explore
-                                    </Button>
+                                <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                                    <Explore className={classes.leftIcon}/>
+                                    Explore
+                                </Button>
                             </Link>
                         </div>
                         <div className={classes.sectionMobile}>

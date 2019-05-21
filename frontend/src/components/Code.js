@@ -44,7 +44,7 @@ const Paper = (props) => {
                 </Link>.
                 <br/>
                 <br/>
-                Pythia is a module framework for multimodal (vision + language) research and can be used
+                Pythia is a modular framework for multimodal (vision + language) research and can be used
                 as a starter point for working on TextVQA.
             </Grid>
         </Grid>
