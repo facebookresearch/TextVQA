@@ -1,6 +1,10 @@
 {
     "news": [
         {
+            "date": "May 2019",
+            "news": "Deadline for <a href='challenge'>TextVQA challenge</a> extended to May 27th 2019."
+        },
+        {
             "date": "Apr 2019",
             "news": "Starter code for <a href='challenge'>TextVQA challenge</a> and LoRRA are now available in <a href='https://github.com/facebookresearch/pythia'>Pythia's new version</a>!"
         },
