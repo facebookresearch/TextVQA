@@ -48,10 +48,10 @@ const SampleDialog = (props) => {
                 <DialogActions>
                     <Typography className={props.classes.flickrUrls} variant="caption" align="left">
                         {props.result.flickr_300k_url.length ?
-                            <Link href={props.result.flickr_300k_url}>Flickr Thumbnail</Link> :
+                            <Link target="_blank" href={props.result.flickr_300k_url}>Flickr Thumbnail</Link> :
                             ''}
                         {props.result.flickr_original_url.length ?
-                            <span> | <Link href={props.result.flickr_original_url}>Original</Link>
+                            <span> | <Link target="_blank" href={props.result.flickr_original_url}>Original</Link>
                             </span> :
                             ''}
                     </Typography>
