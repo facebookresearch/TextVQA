@@ -33,6 +33,9 @@ const styles = (theme) => ({
     title: {
         marginTop: '3em'
     },
+    overview: {
+        marginTop: '2em'
+    },
     headings: {
         marginTop: '1em'
     },
@@ -68,6 +71,9 @@ const styles = (theme) => ({
     },
     sectionHeader: {
         marginTop: '0.35em'
+    },
+    evalaiLogo: {
+        marginLeft: '-3px'
     }
 });
 
@@ -83,7 +89,7 @@ const Challenge = (props) => {
     ];
     const sampleJSONLink = "https://drive.google.com/file/d/1KpDGPUKILomUZY37b0N5urfMjF60eHNf/view?usp=sharing";
     const evaluationInfoLink = "https://visualqa.org/evaluation.html";
-    const deadline = moment.tz("2019-05-18T23:59:59", "Etc/GMT").toDate();
+    const deadline = moment.tz("2019-05-27T23:59:59", "Etc/GMT").toDate();
     return (
         <Grid
             container
@@ -112,9 +118,25 @@ const Challenge = (props) => {
                         <Typography variant="h4" align="left">
                             Deadline: <Countdown date={deadline} renderer={renderer} />
                         </Typography>
-                        <Divider/>
+                        <Divider />
                     </Grid>
-                    <Grid item className={props.classes.title} xs={12} md={8} lg={8}>
+                    <Grid item className={props.classes.versionNumber} xs={12}>
+                        <Grid container>
+                            <Grid item xs={6} sm={4} lg={2}>
+                                <Typography variant="h5" align="left">
+                                    Powered by:
+                                    <Link target="_blank" href="https://evalai.cloudcv.org/web/challenges/challenge-page/244/">
+                                        <img
+                                            className={props.classes.bannerLogo + " " + props.classes.evalaiLogo}
+                                            srcSet="assets/images/evalai_logo.png"
+                                            alt="EvalAI"
+                                        />
+                                    </Link>
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item className={props.classes.overview} xs={12} md={8} lg={8}>
                         <Typography variant="h4" align="left">
                             Overview
                         </Typography>
@@ -180,7 +202,7 @@ const Challenge = (props) => {
                         </Typography>
                         <Typography variant="subtitle1" align="left">
                             <Typography component="span" className={props.classes.spanTypography} color="primary">
-                                18 May 2019 (23:59:59 GMT)
+                                27 May 2019 (23:59:59 GMT)
                             </Typography> &mdash; Submission deadline for participants.
                         </Typography>
                         <Typography variant="subtitle1" align="left">
