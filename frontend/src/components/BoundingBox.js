@@ -42,7 +42,19 @@ class BoundingBox extends Component {
         coords[3] = newHeight;
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
+        this.renderCanvas()
+    }
+
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.showBoxes === this.props.showBoxes && prevProps.imageUrl === this.props.imageUrl) {
+            return;
+        }
+        this.renderCanvas();
+    }
+
+    renderCanvas = () => {
+
         const canvas = this.refs.canvas;
         this.fitToContainer(canvas);
 
