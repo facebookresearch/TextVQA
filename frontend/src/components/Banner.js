@@ -98,11 +98,14 @@ class Banner extends Component {
             }
         }
 
-        const gap = Math.ceil((arr.length - this.vars.originalLen) / nChunks);
+        const gap = Math.floor((arr.length - this.vars.originalLen) / nChunks);
         let index = 0;
         const chunks = this.vars.originalChunks;
 
         for(let i = this.vars.originalLen; i < arr.length; i += gap) {
+            if (index === this.vars.nChunks) {
+                index = Math.floor(Math.random() * this.vars.nChunks);
+            }
             chunks[index] = chunks[index].concat(arr.slice(i, i + gap));
             index++;
         }

@@ -104,11 +104,11 @@ class BoundingBox extends Component {
                 ctx.strokeRect(...box.coords);
                 ctx.rotate(boxRotation * Math.pi / 180);
 
-                ctx.lineWidth = 0.5;
-                ctx.strokeRect(box.coords[0], box.coords[1] - 48, ctx.measureText(box.word).width + 15, 48);
 
 
                 if (isDialog) {
+                    ctx.lineWidth = 0.5;
+                    ctx.strokeRect(box.coords[0], box.coords[1] - 48, ctx.measureText(box.word).width + 15, 48);
                     ctx.fillStyle = this.getColor(box.word);
                     ctx.globalAlpha = 0.5;
                     ctx.rect(box.coords[0], box.coords[1] - 48, ctx.measureText(box.word).width + 15, 48);
@@ -117,6 +117,14 @@ class BoundingBox extends Component {
                     ctx.globalAlpha = 1.0;
                     ctx.fillText(box.word, box.coords[0] + 6, box.coords[1] - 2);
                 } else {
+                    ctx.lineWidth = 0.5;
+                    ctx.strokeRect(box.coords[0], box.coords[1] - 10, ctx.measureText(box.word).width + 15, 10);
+                    ctx.fillStyle = this.getColor(box.word);
+                    ctx.globalAlpha = 0.5;
+                    ctx.rect(box.coords[0], box.coords[1] - 10, ctx.measureText(box.word).width + 15, 10);
+                    ctx.fill();
+                    ctx.fillStyle = "#000";
+                    ctx.globalAlpha = 1.0;
                     ctx.fillText(box.word, box.coords[0], box.coords[1]);
                 }
                 ctx.closePath();
