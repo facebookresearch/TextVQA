@@ -1,4 +1,4 @@
-# TextVQA Wßebsite
+# TextVQA Website
 
 This project was created using `create-react-app`. To run it follow instructions below:
 
