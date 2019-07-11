@@ -69,7 +69,7 @@ const SampleDialog = (props) => {
                     <BoundingBox
                         showBoxes={props.showOCRBoxes}
                         isDialog={true}
-                        imageUrl={props.result.flickr_300k_url}
+                        imageUrl={props.result.flickr_original_url}
                         boxes={props.boxes}
                         rotation={props.result.rotation}
                     />

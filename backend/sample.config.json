@@ -1,0 +1,14 @@
+{
+    "elasticsearch_url": "REPLACE_WITH_YOUR_ELASTICSEARCH_ENDPOINT",
+    "elasticsearch_port": 9200,
+    "index_name": "REPLACE_WITH_YOUR_INDEX_NAME",
+    "num_shards": 5,
+    "type_name": "REPLACE_WITH_YOUR_TYPE_NAME",
+    "whitelisted_origins": ["https://facebookresearch.github.io",
+                            "http://facebookresearch.github.io", "https://textvqa.org"],
+    "aws": {
+        "user_profile": "REPLACE_WITH_YOUR_USER_PROFILE",
+        "region": "us-east-1",
+        "service": "es"
+    }
+}

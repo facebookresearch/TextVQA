@@ -1,0 +1,3 @@
+*.csv
+*-template*.json
+zappa_settings.json

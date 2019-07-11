@@ -1,0 +1,90 @@
+{
+    "_doc": {
+      "properties": {
+        "question_id": {
+            "type": "keyword"
+        },
+        "flickr_original_url": {
+            "type": "keyword",
+            "index": false
+        },
+        "flickr_300k_url": {
+            "type": "keyword",
+            "index": false
+        },
+        "image_id": {
+            "type": "keyword"
+        },
+        "set_name": {
+            "type": "keyword"
+        },
+        "question": {
+            "type": "text",
+            "analyzer": "autocomplete",
+            "search_analyzer": "standard",
+            "fielddata": true
+        },
+        "question_tokens": {
+            "type": "keyword"
+        },
+        "ocr_tokens": {
+            "type": "text",
+            "analyzer": "autocomplete",
+            "search_analyzer": "standard",
+            "fielddata": true
+        },
+        "answers": {
+            "type": "text",
+            "analyzer": "autocomplete",
+            "search_analyzer": "standard",
+            "fielddata": true
+        },
+        "image_classes": {
+            "type": "keyword"
+        },
+        "image_height": {
+            "type": "integer"
+        },
+        "image_width": {
+            "type": "integer"
+        },
+        "ocr_info": {
+          "type": "nested",
+          "properties": {
+              "bounding_box": {
+                  "type": "nested",
+                  "properties": {
+                      "top_left_x": {
+                          "type": "float"
+                      },
+                      "top_left_y": {
+                          "type": "float"
+                      },
+                      "yaw": {
+                          "type": "float"
+                      },
+                      "pitch": {
+                          "type": "float"
+                      },
+                      "rotation": {
+                          "type": "float"
+                      },
+                      "roll": {
+                          "type": "float"
+                      },
+                      "height": {
+                          "type": "float"
+                      },
+                      "width": {
+                          "type": "float"
+                      }
+                  }
+              },
+              "word": {
+                  "type": "keyword"
+              }
+          }
+        }
+      }
+    }
+  }
