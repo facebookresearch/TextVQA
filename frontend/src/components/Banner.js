@@ -37,6 +37,7 @@ class Banner extends Component {
     vars = {
         nChunks: null,
         originalChunks: [],
+        originalIds: [],
         originalLen: 0,
         currentResult: null,
         currentMaxAnswer: null,
@@ -79,14 +80,23 @@ class Banner extends Component {
 
     chunkArray = (arr, nChunks) => {
         let isNewSearch = false;
+
+        const currentIds = [];
+
+        arr.forEach((element) => {
+            currentIds.push(element.question_id);
+        });
+
         if (arr.length === 0) {
             isNewSearch = true
         } else if (this.vars.originalChunks.length > 0 &&
             this.vars.originalChunks[0].length > 0 &&
-            this.vars.originalChunks[0][0].question_id !== arr[0].question_id) {
+            (this.vars.originalChunks[0][0].question_id !== arr[0].question_id ||
+            JSON.stringify(this.vars.originalIds) !==
+            JSON.stringify(currentIds.slice(0, this.vars.originalLen)))
+        ) {
                 isNewSearch = true;
         }
-
         if (this.vars.nChunks !== nChunks || isNewSearch) {
             this.vars.nChunks = nChunks;
             this.vars.originalChunks = [];
@@ -98,9 +108,13 @@ class Banner extends Component {
             }
         }
 
-        const gap = Math.floor((arr.length - this.vars.originalLen) / nChunks);
+        let gap = Math.floor((arr.length - this.vars.originalLen) / nChunks);
         let index = 0;
         const chunks = this.vars.originalChunks;
+
+        if (gap === 0) {
+            gap = 1;
+        }
 
         for(let i = this.vars.originalLen; i < arr.length; i += gap) {
             if (index === this.vars.nChunks) {
@@ -113,6 +127,7 @@ class Banner extends Component {
         this.vars.originalChunks = chunks;
         this.vars.originalLen = arr.length;
         this.vars.nChunks = nChunks;
+        this.vars.originalIds = currentIds;
 
         return chunks;
     }
