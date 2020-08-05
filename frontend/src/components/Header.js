@@ -160,7 +160,7 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href="https://github.com/facebookresearch/pythia"
+                                href="https://github.com/facebookresearch/TextVQA"
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="default">
                                     <Code className={classes.leftIcon}/>
@@ -245,7 +245,7 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href="https://github.com/facebookresearch/pythia"
+                                href="https://github.com/facebookresearch/TextVQA"
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="inherit">
                                     <Code className={classes.leftIcon}/>
