@@ -418,8 +418,8 @@ class Home extends React.Component {
                                         variant="subtitle1"
                                         align="left"
                                         >
-                                        Find the starter code for TextVQA and LoRRA 
-                                        at <Link href="https://github.com/facebookresearch/mmf">https://github.com/facebookresearch/mf</Link>.
+                                        Find the starter code for TextVQA and LoRRA
+                                        at <Link href="https://github.com/facebookresearch/mmf">https://github.com/facebookresearch/mmf</Link>.
                                     </Typography>
                                 </Grid>
                             </Grid>
