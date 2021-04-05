@@ -5,6 +5,7 @@ import Link from '@material-ui/core/Link';
 import CloudDownload from '@material-ui/icons/CloudDownload';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
+import { useLocation } from 'react-router-dom';
 
 const styles = (theme) => ({
     embed: {
@@ -26,6 +27,16 @@ const styles = (theme) => ({
 });
 
 const Paper = (props) => {
+    const type = useLocation().pathname.indexOf("textcaps") === -1 ? "textvqa" : "textcaps";
+    const paperLink = (type === "textcaps" ?
+        "https://dl.fbaipublicfiles.com/textvqa/data/textcaps/textcaps.pdf" :
+        "https://arxiv.org/abs/1904.08920"
+    );
+    const paperPDFLink = (type === "textcaps" ?
+        "https://dl.fbaipublicfiles.com/textvqa/data/textcaps/textcaps.pdf" :
+        "https://arxiv.org/pdf/1904.08920"
+    );
+
     return (
         <Grid container justify="center" alignItems="center">
             <Grid
@@ -40,7 +51,7 @@ const Paper = (props) => {
                 <Link
                     underline="none"
                     className={[props.classes.buttonLink, props.classes.buttonsSide].join(' ')}
-                    href="https://arxiv.org/abs/1904.08920"
+                    href={paperLink}
                 >
                     <Button variant="contained" color="primary">
                         <CloudDownload className={props.classes.leftIcon} />
@@ -49,7 +60,7 @@ const Paper = (props) => {
                 </Link>
                 <embed
                     className={props.classes.embed}
-                    src="https://arxiv.org/pdf/1904.08920"
+                    src={paperPDFLink}
                     type="application/pdf"
                 />
             </Grid>

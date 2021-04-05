@@ -93,7 +93,7 @@ const Challenge = (props) => {
     const sceneTextVQALink = "https://rrc.cvc.uab.es/?ch=11";
     const ocrVQALink = "https://ocr-vqa.github.io/";
     const textCapsLink = "https://textvqa.org/textcaps";
-    const deadline = moment.tz("2021-05-14T23:59:59", "Etc/GMT").toDate();
+    const deadline = moment.tz("2020-05-15T23:59:59", "Etc/GMT").toDate();
     const location = useLocation();
     const index = location.pathname.indexOf("textcaps") === -1 ? "textvqa" : "textcaps";
 
@@ -117,7 +117,7 @@ const Challenge = (props) => {
                 >
                     <Grid item className={props.classes.title} xs={12}>
                         <Typography variant="h3" align="left">
-                            TextVQA Challenge 2021
+                            TextVQA Challenge 2020
                         </Typography>
                     </Grid>
                     <br/>
@@ -164,14 +164,14 @@ const Challenge = (props) => {
                             link: <Link
                                 className={props.classes.evalAILink}
                                 target="_blank"
-                                href="https://eval.ai/web/challenges/challenge-page/874/">
-                                https://eval.ai/web/challenges/challenge-page/874/</Link>
+                                href="https://evalai.cloudcv.org/web/challenges/challenge-page/551/">
+                                https://evalai.cloudcv.org/web/challenges/challenge-page/551/</Link>
                         </Typography>
                     </Grid>
                     <Grid item className={props.classes.title} xs={12} md={4} lg={4}>
                         <img className={props.classes.teaserImage} srcSet="/assets/images/teaser.png" alt="Teaser"/>
                     </Grid>
-                    {/* <Grid
+                    <Grid
                         item
                         style={{ marginTop: 0 }}
                         className={props.classes.headings}
@@ -194,7 +194,7 @@ const Challenge = (props) => {
                                 allowFullScreen
                             />
                         </Typography>
-                    </Grid> */}
+                    </Grid>
 
                     <Grid item style={{marginTop: 0}} className={props.classes.headings} xs={12}>
                         <Typography variant="h4" align="left">
@@ -214,19 +214,19 @@ const Challenge = (props) => {
                         at <Link href="https://github.com/facebookresearch/pythia/tree/project/m4c/projects/M4C">this link</Link> and <Link href="https://arxiv.org/abs/1911.06258">read the paper</Link>.
                         </Typography>
                     </Grid>
-                    {/* <Grid item className={props.classes.headings} xs={12}>
+                    <Grid item className={props.classes.headings} xs={12}>
                         <Typography variant="h4" align="left">
                         Prizes
                         </Typography>
                     </Grid>
                     <Grid item className={props.classes.versionNumber} xs={12} md={8} lg={8}>
                         <Typography variant="subtitle1" align="left">
-                        We will be providing the winners of the second TextVQA 2021 challenge, the first TextCaps 2021 challenge (coming soon) and
-                        the first joint TextVQA and TextCaps 2021 challenge (coming soon) <Link href="https://cloud.google.com/">
+                        We will be providing the winners of the second TextVQA 2020 challenge, the first TextCaps 2020 challenge (coming soon) and
+                        the first joint TextVQA and TextCaps 2020 challenge (coming soon) <Link href="https://cloud.google.com/">
                                 Google Cloud Platform (GCP)
                         </Link>  credits worth $10k total. We thank GCP for their generosity.
                         </Typography>
-                    </Grid> */}
+                    </Grid>
                     <Grid item className={props.classes.headings} xs={12}>
                         <Typography variant="h4" align="left">
                         Dates
@@ -235,19 +235,19 @@ const Challenge = (props) => {
                     <Grid item className={props.classes.versionNumber} xs={12} md={8} lg={8}>
                         <Typography variant="subtitle1" align="left">
                             <Typography component="span" className={props.classes.spanTypography} color="primary">
-                                9 March 2021
+                                13 March 2020
                             </Typography> &mdash; Challenge announced.
                         </Typography>
                         <Typography variant="subtitle1" align="left">
                             <Typography component="span" className={props.classes.spanTypography} color="primary">
-                                14 May 2021 (23:59:59 GMT)
+                                15 May 2020 (23:59:59 GMT)
                             </Typography> &mdash; Submission deadline for participants.
                         </Typography>
                         <Typography variant="subtitle1" align="left">
                             <Typography component="span" className={props.classes.spanTypography} color="primary">
-                                June 19th 2021
+                                June 14th 2020
                             </Typography> &mdash; Winners' announcment at the <Link href="https://visualqa.org/workshop.html">
-                                Visual Question Answering Workshop, CVPR 2021</Link>.
+                                Visual Question Answering and Dialog Workshop, CVPR 2020</Link>.
                         </Typography>
                         <br/>
                         <Typography variant="subtitle1" align="left">
@@ -309,8 +309,8 @@ const Challenge = (props) => {
                             The challenge page is available at: <Link
                                 className={props.classes.evalAILink}
                                 target="_blank"
-                                href="https://eval.ai/web/challenges/challenge-page/874/">
-                            https://eval.ai/web/challenges/challenge-page/874/</Link>
+                                href="https://evalai.cloudcv.org/web/challenges/challenge-page/551/">
+                            https://evalai.cloudcv.org/web/challenges/challenge-page/551/</Link>
                         </Typography>
                         <Typography variant="subtitle1" align="left">
                         Challenge has three phases:
@@ -375,7 +375,7 @@ const Challenge = (props) => {
                             textvqa@fb.com
                         </Link> We will contact
                         the winning team to voluntarily present at the <Link href="https://visualqa.org/workshop.html">
-                        Visual Question Answering and Dialog Workshop, CVPR 2021</Link>. Following guidelines must be followed
+                        Visual Question Answering and Dialog Workshop, CVPR 2020</Link>. Following guidelines must be followed
                         for making a submission to <b>test-std</b>.
 
                         <b>Note:</b> Teams submitting to the challenge are required to submit a up-to 2 page abstract after the challenge.
@@ -412,7 +412,7 @@ const Challenge = (props) => {
 
                         <Typography className={props.classes.headings} variant="subtitle1" align="left">
 
-                        <b>Note:</b> Similar to last year, we have a new phase called <b>test-violating-standard-guidelines</b> which
+                        <b>NEW:</b> This year we have a new phase called <b>test-violating-standard-guidelines</b> which
                         participants can to submit for submissions that violate above guidelines.
                         This phase doesn't have a leaderboard and submissions on this phase will remain private.
                         The total number of submissions for <b>test-std</b> and <b>test-violating-standard-guidelines</b> combined should not exceed 5.
@@ -440,7 +440,7 @@ const Challenge = (props) => {
                             All participants of the TextVQA and TextCaps Challenges can submit a
                             short abstract (max 2 pages in CVPR camera ready format, references excluded) providing details of their submission.
                             To be considered as challenge winner the submission of an abstract is required.
-                            The abstract must be submitted by <b>Friday, May 21th, 4pm PDT.</b> Submit
+                            The abstract must be submitted by <b>Wednesday, May 20th, 4pm PDT.</b> Submit
                             by email to textvqa@fb.com.
                             <List dense={false}>
                                 <ListItem>
@@ -563,7 +563,7 @@ const Challenge = (props) => {
                     </Grid>
 
                     <Grid item className={props.classes.versionNumber} xs={12} md={12} lg={12}>
-                        <People lgSize={3} people={challengePeople[index]["2021"]}/>
+                        <People lgSize={3} people={challengePeople[index]["2020"]}/>
                     </Grid>
                     <Grid
                         container

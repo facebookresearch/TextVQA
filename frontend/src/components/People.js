@@ -3,9 +3,10 @@ import React from 'react';
 import Link from '@material-ui/core/Link';
 
 import { withStyles, Typography } from "@material-ui/core";
-import * as people from '../people_list.json';
+import people from '../people_list.json';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
+import { useLocation } from 'react-router-dom';
 
 const styles = (theme) => ({
     avatar: {
@@ -21,10 +22,13 @@ const styles = (theme) => ({
 const People = (props) => {
     let selectedPeople = []
     let lgSize = 2;
+    const location = useLocation();
+    const index = location.pathname.indexOf("textcaps") === -1 ? "textvqa" : "textcaps";
+
     if (props.people) {
         selectedPeople = props.people;
     } else {
-        selectedPeople = people.people;
+        selectedPeople = people[index];
     }
 
     if (props.lgSize) {

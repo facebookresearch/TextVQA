@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid'
 
 import * as config from '../frontend_config.json';
 import Banner from './Banner';
+import { withRouter } from 'react-router';
 
 const styles = theme => ({
     root: {
@@ -40,6 +41,21 @@ class Explore extends Component {
         ]
     }
 
+    replaceBody = (body) => {
+        const { type } = this.props.match.params;
+        body = body.join('\n');
+        body = body.replace('"field":"set_name"', '"field":"set_name"');
+        body = body.replace('"field":"image_classes"', '"field":"image_classes"');
+        if (type === "textcaps") {
+            body = body.replace('"field":"captions"', '"field":"captions"');
+        } else{
+            body = body.replace('"field":"question"', '"field":"question"');
+            body = body.replace('"field":"answers"', '"field":"answers"');
+        }
+        body = body.replace('"field":"ocr_tokens"', '"field":"ocr_tokens"');
+        return body;
+    }
+
     updateQuery = (query) => {
         let body = query.body;
         body = body.split('\n')
@@ -54,12 +70,7 @@ class Explore extends Component {
         };
 
         body[1] = JSON.stringify(queryParams)
-        body = body.join('\n');
-        body = body.replace('"field":"set_name"', '"field":"set_name"');
-        body = body.replace('"field":"image_classes"', '"field":"image_classes"');
-        body = body.replace('"field":"question"', '"field":"question"');
-        body = body.replace('"field":"ocr_tokens"', '"field":"ocr_tokens"');
-        body = body.replace('"field":"answers"', '"field":"answers"');
+        body = this.replaceBody(body);
         query.body = body;
         return query;
     }
@@ -76,7 +87,39 @@ class Explore extends Component {
         this.setState({ anchorEl: null });
     }
 
+    getReactArray = (item) => {
+        const { type } = this.props.match.params;
+
+        let array = [];
+
+        if (type === "textcaps") {
+            array = ["set_name", "image_classes", "ocr_tokens", "captions"];
+        } else {
+            array = ["set_name", "image_classes", "ocr_tokens", "question", "answer"];
+        }
+
+        const index = array.indexOf(item);
+        if (index !== -1) {
+            array.splice(index, 1);
+        }
+        return array;
+    }
+
     render() {
+        const { type } = this.props.match.params;
+        let mainDataField = "question";
+        let mainPlaceHolder = "Search in the questions";
+        let isTextVQA = true;
+        let showQuestionsPlaceholder = "Show Questions";
+
+        if (type === "textcaps") {
+            mainDataField = "captions";
+            mainPlaceHolder = "Search in the captions";
+            isTextVQA = false;
+            showQuestionsPlaceholder = "Show Captions";
+            config.index_name = "textcaps";
+        }
+
         return (
           <ReactiveBase
             app={config.index_name}
@@ -93,15 +136,15 @@ class Explore extends Component {
                 <Grid item xs={12} md={6} lg={4}>
                     <CategorySearch
                         componentId="searchbox"
-                        dataField="question"
+                        dataField={mainDataField}
                         autosuggest={false}
-                        categoryField="question"
-                        placeholder="Search in the questions"
+                        categoryField={mainDataField}
+                        placeholder={mainPlaceHolder}
                         debounce={1000}
                         style={{
                             padding: "5px"
                         }}
-                        react={{ and: ['set_name', 'image_classes', 'ocr_tokens', 'answers']}}
+                        react={{ and: this.getReactArray(mainDataField)}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2} lg={1}>
@@ -111,7 +154,7 @@ class Explore extends Component {
                         showCount={false}
                         placeholder="Choose set"
                         showSearch={false}
-                        react={{ and: ['question', 'image_classes', 'ocr_tokens', 'answers']}}
+                        react={{ and: this.getReactArray("set_name")}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2} lg={2}>
@@ -120,7 +163,7 @@ class Explore extends Component {
                         dataField="image_classes"
                         placeholder="Choose classes"
                         showSearch={false}
-                        react={{ and: ['set_name', 'question', 'ocr_tokens', 'answers']}}
+                        react={{ and: this.getReactArray("image_classes")}}
                     />
                 </Grid>
                 <Grid item xs={12} md={2} lg={1}>
@@ -160,21 +203,24 @@ class Explore extends Component {
                                         value="showQuestions"
                                     />
                                 }
-                                label="Show questions">
+                                label={showQuestionsPlaceholder}>
                             </FormControlLabel>
                         </MenuItem>
-                        <MenuItem>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
+                        {
+                            isTextVQA ?
+                            <MenuItem>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
                                         checked={this.state.showAnswers}
                                         onChange={this.handleCheckboxChange('showAnswers')}
                                         value="showAnswers"
-                                    />
-                                }
-                                label="Show answers">
-                            </FormControlLabel>
-                        </MenuItem>
+                                        />
+                                    }
+                                    label="Show answers">
+                                </FormControlLabel>
+                            </MenuItem> : ""
+                        }
                     </Menu>
                 </Grid>
                 <Grid item xs={12} md={6} lg={2}>
@@ -187,23 +233,26 @@ class Explore extends Component {
                         style={{
                             padding: "5px"
                         }}
-                        react={{ and: ['set_name', 'image_classes', 'question', 'answers']}}
+                        react={{ and: this.getReactArray("ocr_tokens")}}
 
                     />
                 </Grid>
-                <Grid item xs={12} md={6} lg={2}>
-                    <CategorySearch
-                        componentId="answers"
-                        dataField="answers"
-                        categoryField="answers"
-                        placeholder="Search for Answers"
-                        debounce={1400}
-                        style={{
-                            padding: "5px"
-                        }}
-                        react={{ and: ['set_name', 'image_classes', 'ocr_tokens', 'question']}}
-                    />
-                </Grid>
+                {
+                    isTextVQA ?
+                    <Grid item xs={12} md={6} lg={2}>
+                        <CategorySearch
+                            componentId="answers"
+                            dataField="answers"
+                            categoryField="answers"
+                            placeholder="Search for Answers"
+                            debounce={1400}
+                            style={{
+                                padding: "5px"
+                            }}
+                            react={{ and: this.getReactArray("answers")}}
+                            />
+                    </Grid> : ""
+                }
                 <Banner
                     showOCRBoxes={this.state.showOCRBoxes}
                     showAnswers={this.state.showAnswers}
@@ -224,4 +273,4 @@ class Explore extends Component {
     }
 }
 
-export default withStyles(styles)(Explore);
+export default withStyles(styles)(withRouter(Explore));

@@ -45,17 +45,17 @@ const styles = (theme) => ({
     }
 });
 
-const Download = (props) => {
-    const trainDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_0.5.1_train.json";
-    const valDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_0.5.1_val.json";
-    const testDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_0.5.1_test.json";
+const TextCapsDownload = (props) => {
+    const trainDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/textcaps/TextCaps_0.1_train.json";
+    const valDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/textcaps/TextCaps_0.1_val.json";
+    const testDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/textcaps/TextCaps_0.1_test.json";
     const OCRTrainDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_Rosetta_OCR_v0.2_train.json";
     const OCRValDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_Rosetta_OCR_v0.2_val.json";
     const OCRTestDownloadURL = "https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_Rosetta_OCR_v0.2_test.json";
     const trainAndValImagesUrl = "https://dl.fbaipublicfiles.com/textvqa/images/train_val_images.zip"
     const testImagesUrl = "https://dl.fbaipublicfiles.com/textvqa/images/test_images.zip"
     const openImagesUrl = "https://storage.googleapis.com/openimages/web/download.html";
-    const evalAIURL = "https://evalai.cloudcv.org/web/challenges/challenge-page/244/";
+    const evalAIURL = "https://evalai.cloudcv.org/web/challenges/challenge-page/573/";
     const licenseURL = "https://creativecommons.org/licenses/by/4.0/";
 
     return (
@@ -78,20 +78,13 @@ const Download = (props) => {
                 >
                     <Grid item className={props.classes.title} xs={12}>
                         <Typography variant="h3" align="left">
-                            TextVQA dataset
+                            TextCaps dataset
                         </Typography>
                     </Grid>
                     <br />
                     <Grid item className={props.classes.versionNumber} xs={12}>
                         <Typography variant="h4" align="left">
-                            v0.5.1
-                        </Typography>
-                    </Grid>
-
-                    <Grid item className={props.classes.versionNumber} xs={12}>
-                        <Typography variant="subtitle1" align="left">
-                            This version has everything same as <Link href="/datasets#v0.5">v0.5</Link> except that Rosetta OCR tokens
-                            have been updated and separated into a separate JSON file.
+                            v0.1
                         </Typography>
                     </Grid>
 
@@ -99,28 +92,28 @@ const Download = (props) => {
                         <Typography variant="h5" align="left">
                             Training set <Link
                                 href={trainDownloadURL}>
-                                    <CloudDownload className={props.classes.downloadURLIcon} />
-                                </Link>
+                                <CloudDownload className={props.classes.downloadURLIcon} />
+                            </Link>
                         </Typography>
                         <ul className={props.classes.ulItems}>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     <Link className={props.classes.liLink} href={trainDownloadURL}>
-                                    34,602 questions
-                                    </Link> (103MB)
+                                        109,765 captions
+                                    </Link> (173MB)
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     <Link className={props.classes.liLink} href={trainAndValImagesUrl}>
-                                    21,953 images
+                                        21,953 images
                                     </Link> (6.6GB)
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     <Link className={props.classes.liLink} href={OCRTrainDownloadURL}>
-                                    Rosetta OCR tokens [v0.2]
+                                        Rosetta OCR tokens [v0.2]
                                     </Link>
                                 </Typography>
                             </li>
@@ -130,15 +123,15 @@ const Download = (props) => {
                         <Typography variant="h5" align="left">
                             Validation set <Link
                                 href={valDownloadURL}>
-                                    <CloudDownload className={props.classes.downloadURLIcon} />
-                                </Link>
+                                <CloudDownload className={props.classes.downloadURLIcon} />
+                            </Link>
                         </Typography>
                         <ul className={props.classes.ulItems}>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     <Link className={props.classes.liLink} href={valDownloadURL}>
-                                    5,000 questions
-                                    </Link> (16MB)
+                                        15,830 captions
+                                    </Link> (25MB)
                                 </Typography>
                             </li>
                             <li>
@@ -159,21 +152,21 @@ const Download = (props) => {
                         <Typography variant="h5" align="left">
                             Test set <Link
                                 href={testDownloadURL}>
-                                    <CloudDownload className={props.classes.downloadURLIcon} />
-                                </Link>
+                                <CloudDownload className={props.classes.downloadURLIcon} />
+                            </Link>
                         </Typography>
                         <ul className={props.classes.ulItems}>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     <Link className={props.classes.liLink} href={testDownloadURL}>
-                                    5,734 questions
-                                    </Link> (13MB)
+                                        Metadata
+                                    </Link> (6.5MB)
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     <Link className={props.classes.liLink} href={testImagesUrl}>
-                                    3,289 images
+                                        3,289 images
                                     </Link> (926MB)
                                 </Typography>
                             </li>
@@ -193,10 +186,10 @@ const Download = (props) => {
                     </Grid>
                     <Grid item xs={12} md={12}>
                         <Typography variant="h6" align="left">Challenge</Typography>
-                        <br/>
+                        <br />
                         <Typography variant="subtitle1" align="left">
-                            TextVQA Challenge 2020 is live! See more details
-                            on <Link href="/challenge">challenge page</Link> to participate.
+                            TextCaps Challenge 2020 is live! See more details
+                            on <Link href="/textcaps/challenge">challenge page</Link> to participate.
                         </Typography>
                     </Grid>
 
@@ -219,8 +212,8 @@ const Download = (props) => {
                                 <Typography variant="subtitle1" align="left">
                                     <b>Note:</b> Some of the images in OpenImages are rotated, please make sure
                                     to check the <b>Rotation</b> field
-                                    in the Image IDs files for <Link target="_blank" href="https://storage.googleapis.com/openimages/2018_04/train/train-images-boxable-with-rotation.csv">train
-                                    </Link> and <Link target="_blank" href="https://storage.googleapis.com/openimages/2018_04/test/test-images-with-rotation.csv">test</Link>.
+                                    in the Image IDs files for <Link href="https://storage.googleapis.com/openimages/2018_04/train/train-images-boxable-with-rotation.csv">train
+                                    </Link> and <Link href="https://storage.googleapis.com/openimages/2018_04/test/test-images-with-rotation.csv">test</Link>.
                                 </Typography>
                             </li>
                             <li>
@@ -230,57 +223,47 @@ const Download = (props) => {
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
-                                TextVQA evaluation server for testing and validation set is hosted
-                                on <Link target="_blank" href={evalAIURL}>EvalAI</Link>.
+                                    TextCaps evaluation server for testing and validation set is hosted
+                                on <Link href={evalAIURL}>EvalAI</Link>.
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
-                                Numbers in the papers should be reported on v0.5.1/v0.5 test set (test-std).
-                                <b>NOTE:</b> Both v0.5.1 and v0.5 are same except the OCR tokens. See top.
+                                    Numbers in the papers should be reported on v0.1 test set (test-std).
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
                                     We also provide OCR tokens
-                                    extracted from <Link target="_blank" href="https://code.fb.com/ai-research/rosetta-understanding-text-in-images-and-videos-with-machine-learning/">Rosetta</Link> system
+                                    extracted from <Link href="https://code.fb.com/ai-research/rosetta-understanding-text-in-images-and-videos-with-machine-learning/">Rosetta</Link> system
                                     with the dataset.
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant="subtitle1" align="left">
-                                    <b>OCR tokens</b> provided in the dataset better than the
-                                    ones used in the TextVQA <Link href="paper">paper</Link>,
-                                    but are nowhere near perfect. Original OCR tokens that were
-                                    used in the original paper can be found in the data for v0.5 provided below.
-                                    Researchers are welcome to use their own OCR systems.
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography variant="subtitle1" align="left">
-                                Reach us out at <Link href="mailto:textvqa@fb.com">textvqa@fb.com</Link> for any questions, suggestions and feedback.
+                                    Reach us out at <Link href="mailto:textvqa@fb.com">textvqa@fb.com</Link> for any questions, suggestions and feedback.
                                 </Typography>
                             </li>
                         </ul>
                     </Grid>
                     <Grid item xs={12} md={12}>
                         <Typography variant="h6" align="left">Description</Typography>
-                        <br/>
+                        <br />
                         <Typography align="left">
-                        TextVQA JSON files
+                            TextCaps JSON files
                         </Typography>
                         <Typography component="span" align="left" className={props.classes.preParent}>
                             <Typography component="pre">
                                 <Typography component="span" variant="body1">
                                     <code>
-                                        {JSON.stringify(dataDescription['default']['textvqa'], null, 2)}
+                                        {JSON.stringify(dataDescription['default']['textcaps'], null, 2)}
                                     </code>
                                 </Typography>
                             </Typography>
                         </Typography>
-                        <br/>
+                        <br />
                         <Typography align="left">
-                        OCR JSON files
+                            OCR JSON files
                         </Typography>
                         <Typography component="span" align="left" className={props.classes.preParent}>
 
@@ -294,101 +277,21 @@ const Download = (props) => {
                         </Typography>
 
                     </Grid>
-                    <Grid item xs={12}>
-                        <br />
-                        <Divider />
-                        <br />
-                    </Grid>
-                    <Grid id="v0.5" item className={props.classes.versionNumber} xs={12}>
-                        <Typography variant="h4" align="left">
-                            v0.5
-                    </Typography>
-                    </Grid>
-                    <Grid className={props.classes.setItems} item xs={12} sm={6} md={4}>
-                        <Typography variant="h5" align="left">
-                            Training set <Link
-                                href={trainDownloadURL}>
-                                <CloudDownload className={props.classes.downloadURLIcon} />
-                            </Link>
-                        </Typography>
-                        <ul className={props.classes.ulItems}>
-                            <li>
-                                <Typography variant="subtitle1" align="left">
-                                    <Link className={props.classes.liLink} href={trainDownloadURL.replace("0.5.1", "0.5")}>
-                                        34,602 questions
-                                    </Link> (103MB)
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography variant="subtitle1" align="left">
-                                    <Link className={props.classes.liLink} href={trainAndValImagesUrl}>
-                                        21,953 images
-                                    </Link> (6.6GB)
-                                </Typography>
-                            </li>
-                        </ul>
-                    </Grid>
-                    <Grid className={props.classes.setItems} item xs={12} sm={6} md={4}>
-                        <Typography variant="h5" align="left">
-                            Validation set <Link
-                                href={valDownloadURL}>
-                                <CloudDownload className={props.classes.downloadURLIcon} />
-                            </Link>
-                        </Typography>
-                        <ul className={props.classes.ulItems}>
-                            <li>
-                                <Typography variant="subtitle1" align="left">
-                                    <Link className={props.classes.liLink} href={valDownloadURL.replace("0.5.1", "0.5")}>
-                                        5,000 questions
-                                    </Link> (16MB)
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography variant="subtitle1" align="left">
-                                    3,166 images
-                                </Typography>
-                            </li>
-                        </ul>
-                    </Grid>
-                    <Grid className={props.classes.setItems} item xs={12} sm={6} md={4}>
-                        <Typography variant="h5" align="left">
-                            Test set <Link
-                                href={testDownloadURL}>
-                                <CloudDownload className={props.classes.downloadURLIcon} />
-                            </Link>
-                        </Typography>
-                        <ul className={props.classes.ulItems}>
-                            <li>
-                                <Typography variant="subtitle1" align="left">
-                                    <Link className={props.classes.liLink} href={testDownloadURL.replace("0.5.1", "0.5")}>
-                                        5,734 questions
-                                    </Link> (13MB)
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography variant="subtitle1" align="left">
-                                    <Link className={props.classes.liLink} href={testImagesUrl}>
-                                        3,289 images
-                                    </Link> (926MB)
-                                </Typography>
-                            </li>
-                        </ul>
-                    </Grid>
                     <Grid item xs={12} md={12}>
                         <Typography variant="h6" align="left">License</Typography>
-                        <br/>
+                        <br />
                         <Typography variant="subtitle1" align="left">
                             <Link href={licenseURL}>CC BY 4.0</Link>
                         </Typography>
                     </Grid>
                 </Grid>
-                <br/>
-                <Divider/>
-                <br/>
+                <br />
+                <Divider />
+                <br />
             </Grid>
         </Grid>
 
     )
 }
 
-export default withStyles(styles)(Download);
+export default withStyles(styles)(TextCapsDownload);
