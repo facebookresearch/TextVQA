@@ -8,11 +8,18 @@ import Explore from './components/Explore';
 import Home from './components/Home';
 
 import './App.css';
-import theme from './styles';
+import theme  from './styles';
+import Challenge2019 from './components/Challenge2019';
 import Challenge from './components/Challenge';
+import {default as Challenge2020} from './components/Challenge2020';
+import TextCapsChallenge from './components/TextCapsChallenge';
+import {default as TextCapsChallenge2020} from './components/TextCapsChallenge2020';
 import Download from './components/Download';
 import Code from './components/Code';
 import Paper from './components/Paper';
+import TextCapsDownload from './components/TextCapsDownload';
+import TextVQAHead from './components/TextVQAHead';
+import TextCapsHead from './components/TextCapsHead';
 
 class App extends Component {
   render() {
@@ -25,12 +32,23 @@ class App extends Component {
             </header>
               <div>
                 <Route path="/" exact component={Home} />
-                <Route path="/explore" component={Explore} />
-                <Route path="/challenge" component={Challenge} />
-                <Route path="/download" component={Download} />
-                <Route path="/code" component={Code} />
-                <Route path="/dataset" component={Download} />
-                <Route path="/paper" component={Paper} />
+                <Route path="/" component={TextVQAHead} />
+                <Route path="/textcaps" component={TextCapsHead} />
+                <Route path="/textcaps" exact component={Home} />
+                <Route path="/:type?/explore" component={Explore} />
+                <Route exact path="/textcaps/challenge" component={TextCapsChallenge} />
+                <Route exact path="/textcaps/challenge/2021" component={TextCapsChallenge} />
+                <Route exact path="/textcaps/challenge/2020" component={TextCapsChallenge2020} />
+                <Route exact path="/challenge/2019" component={Challenge2019} />
+                <Route exact path="/challenge/2020" component={Challenge2020} />
+                <Route exact path="/challenge" component={Challenge} />
+                <Route exact path="/challenge/2021" component={Challenge} />
+                <Route exact path="/download" component={Download} />
+                <Route exact path="/textcaps/download" component={TextCapsDownload} />
+                <Route path="/:type?/code" component={Code} />
+                <Route exact path="/dataset" component={Download} />
+                <Route exact path="/textcaps/dataset" component={TextCapsDownload} />
+                <Route path="/:type?/paper" component={Paper} />
               </div>
           </div>
         </Router>

@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid'
 
 import BoundingBox from './BoundingBox';
 import SampleDialog from './SampleDialog';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
     gridItem: {
@@ -80,18 +81,23 @@ class Banner extends Component {
 
     chunkArray = (arr, nChunks) => {
         let isNewSearch = false;
+        let uniqueId = "question_id";
+
+        if (this.props.match.params.type === "textcaps") {
+            uniqueId = "image_id";
+        }
 
         const currentIds = [];
 
         arr.forEach((element) => {
-            currentIds.push(element.question_id);
+            currentIds.push(element[uniqueId]);
         });
 
         if (arr.length === 0) {
             isNewSearch = true
         } else if (this.vars.originalChunks.length > 0 &&
             this.vars.originalChunks[0].length > 0 &&
-            (this.vars.originalChunks[0][0].question_id !== arr[0].question_id ||
+            (this.vars.originalChunks[0][0][uniqueId] !== arr[0][uniqueId] ||
             JSON.stringify(this.vars.originalIds) !==
             JSON.stringify(currentIds.slice(0, this.vars.originalLen)))
         ) {
@@ -133,11 +139,18 @@ class Banner extends Component {
     }
 
     renderCardComponents = (results) => {
+        if (results.error) {
+            return (
+                <div> Some error happened! </div>
+            );
+        }
+        console.log(results);
         if (results.length === 0) {
             return "";
         }
 
-        const finalResults = [...results.results, ...results.streamResults];
+        const finalResults = [...results.data, ...results.streamData];
+        // const finalResults = [...results];
         const colWidth = this.getWidthForColumn();
         const numChunks = Math.floor(100 / colWidth);
         const chunks = this.chunkArray(finalResults, numChunks);
@@ -195,6 +208,29 @@ class Banner extends Component {
         return maxWord;
     }
 
+    getMainCardContent = (result) => {
+        if (result.question) {
+            return (
+                <Typography variant="subtitle1">
+                    {result.question}
+                </Typography>
+            );
+        } else {
+            let captions = [];
+            if (result.captions) {
+                result.captions.forEach((caption, idx) => {
+                    captions.push(
+                        <Typography variant="subtitle1" align="left">
+                            {(idx + 1) + ". " + caption}
+                        </Typography>
+                    );
+                });
+            }
+
+            return captions;
+        }
+    }
+
     renderCardComponent = (result, cardIdx) => {
         const boxes = []
 
@@ -236,10 +272,7 @@ class Banner extends Component {
                     />
                     <CardContent className={this.props.classes.cardContent}>
                         {
-                            this.props.showQuestions ?
-                            <Typography variant="subtitle1">
-                                {result.question}
-                            </Typography> : ''
+                            this.props.showQuestions ? this.getMainCardContent(result) : ''
                         }
                         {
                             this.props.showAnswers && maxAnswer.length > 0 ?
@@ -278,11 +311,18 @@ class Banner extends Component {
         );
     }
     render() {
+        const { type } = this.props.match.params;
+        let dataField = "question";
+
+        if (type === "textcaps") {
+            dataField = "captions";
+        }
+
         return (
             <Grid container direction="row" justify="center" alignItems="center">
                 <ReactiveList
                     componentId="result"
-                    dataField="question"
+                    dataField={dataField}
                     title="Results"
                     from={0}
                     size={this.props.size || 25}
@@ -292,7 +332,7 @@ class Banner extends Component {
                     loader={this.props.loader}
                     renderNoResults={this.noResultStats}
                     react={this.props.reactValues}
-                    renderAllData={this.renderCardComponents}
+                    render={this.renderCardComponents}
                     style={this.props.style || {}}
                 />
                 {this.props.dialogEnabled ?
@@ -310,4 +350,4 @@ class Banner extends Component {
     }
 }
 
-export default withWidth()(withStyles(styles)(Banner));
+export default withWidth()(withStyles(styles)(withRouter(Banner)));

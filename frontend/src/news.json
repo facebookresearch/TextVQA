@@ -1,24 +1,82 @@
 {
-    "news": [
-        {
-            "date": "May 2019",
-            "news": "Deadline for <a href='challenge'>TextVQA challenge</a> extended to May 27th 2019."
-        },
-        {
-            "date": "Apr 2019",
-            "news": "Starter code for <a href='challenge'>TextVQA challenge</a> and LoRRA are now available in <a href='https://github.com/facebookresearch/pythia'>Pythia's new version</a>!"
-        },
-        {
-            "date": "Apr 2019",
-            "news": "TextVQA paper 'Towards VQA Models That Can Read' is available on <a href='https://arxiv.org/abs/1904.08920'>arXiV</a>!"
-        },
-        {
-            "date": "Mar 2019",
-            "news": "<a href='challenge'>TextVQA Challenge 2019</a> announced on the <a href='download'>TextVQA 0.5 dataset</a>!"
-        },
-        {
-            "date": "Mar 2019",
-            "news": "<a href='download'>TextVQA v0.5</a> containing 45,336 questions released."
-        }
-    ]
+    "textvqa": {
+        "news": [
+            {
+                "date": "Mar 2020",
+                "news": "<a href='/textcaps/challenge'>TextCaps Challenge 2021</a> announced on the <a href='/textcaps/download/'>TextCaps v0.1 dataset</a>."
+            },
+            {
+                "date": "Mar 2021",
+                "news": "<a href='/challenge/'>TextVQA Challenge 2021</a> announced on the <a href='/download'>TextVQA v0.5.1 dataset</a>."
+            },
+            {
+                "date": "Jul 2020",
+                "news": "<a href='/textcaps'>TextCaps</a> paper has been accepted at ECCV 2020 as an <a href='https://www.youtube.com/watch?v=bWOnRpqmom4'>oral presentation</a>!"
+            },
+            {
+                "date": "Jun 2020",
+                "news": "<a href='/challenge/2020'>TextVQA Challenge 2020</a> winners announced. Checkout analysis and results <a href='https://www.youtube.com/watch?v=O5y8i3OYdo8'>video</a>."
+            },
+            {
+                "date": "Mar 2020",
+                "news": "<a href='/textcaps/challenge/2020'>TextCaps Challenge 2020</a> announced on the <a href='/textcaps/download/'>TextCaps v0.1 dataset</a>."
+            },
+            {
+                "date": "Mar 2020",
+                "news": "<a href='/challenge/2020'>TextVQA Challenge 2020</a> announced on the <a href='/download'>TextVQA v0.5.1 dataset</a>."
+            },
+            {
+                "date": "Mar 2020",
+                "news": "<a href='/download'>TextVQA v0.5.1</a> is now public with new updated OCR tokens."
+            },
+            {
+                "date": "Jan 2020",
+                "news": "<a href='https://arxiv.org/abs/1911.06258'>M4C</a>, new TextVQA SoTA model's is now available in <a href-'https://github.com/facebookresearch/pythia/tree/project/m4c/projects/M4C'>Pythia</a>."
+            },
+            {
+                "date": "May 2019",
+                "news": "Deadline for <a href='challenge/2019'>TextVQA challenge</a> extended to May 27th 2019."
+            },
+            {
+                "date": "Apr 2019",
+                "news": "Starter code for <a href='challenge/2019'>TextVQA challenge</a> and LoRRA are now available in <a href='https://github.com/facebookresearch/pythia'>Pythia's new version</a>!"
+            },
+            {
+                "date": "Apr 2019",
+                "news": "TextVQA paper 'Towards VQA Models That Can Read' is available on <a href='https://arxiv.org/abs/1904.08920'>arXiV</a>!"
+            },
+            {
+                "date": "Mar 2019",
+                "news": "<a href='challenge/2019'>TextVQA Challenge 2019</a> announced on the <a href='download'>TextVQA 0.5 dataset</a>!"
+            },
+            {
+                "date": "Mar 2019",
+                "news": "<a href='download'>TextVQA v0.5</a> containing 45,336 questions released."
+            }
+        ]
+    },
+    "textcaps": {
+        "news": [
+            {
+                "date": "Mar 2021",
+                "news": "<a href='/textcaps/challenge'>TextCaps Challenge 2021</a> announced on the <a href='/textcaps/download/'>TextCaps v0.1 dataset</a>."
+            },
+            {
+                "date": "Jul 2020",
+                "news": "<a href='/textcaps'>TextCaps</a> paper has been accepted at ECCV 2020 as an <a href='https://www.youtube.com/watch?v=bWOnRpqmom4'>oral presentation</a>!"
+            },
+            {
+                "date": "Jun 2020",
+                "news": "<a href='/textcaps/challenge/2020'>TextCaps Challenge 2020</a> winners announced. Checkout analysis and results <a href='https://www.youtube.com/watch?v=9utGevwrSj8'>video</a>."
+            },
+            {
+                "date": "Mar 2020",
+                "news": "<a href='/textcaps/challenge/2020'>TextCaps Challenge 2020</a> announced on the <a href='/textcaps/download/'>TextCaps v0.1 dataset</a>."
+            },
+            {
+                "date": "Mar 2020",
+                "news": "<a href='/textcaps/download'>TextCaps v0.1</a> containing 142,040 captions released."
+            }
+        ]
+    }
 }

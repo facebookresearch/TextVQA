@@ -1,5 +1,5 @@
 {
-    "people": [
+    "textvqa": [
         {
             "name": "Amanpreet Singh",
             "organization": "Facebook AI Research",
@@ -47,6 +47,32 @@
             "organization": "Facebook AI Research",
             "website": "https://rohrbach.vision",
             "img_url": "https://visualqa.org/static/img/marcus.jpg"
+        }
+    ],
+    "textcaps": [
+        {
+            "name": "Oleksii Sidorov",
+            "organization": "Facebook AI Research",
+            "website": "https://www.linkedin.com/in/sidorovoleksii/",
+            "img_url": "https://i.imgur.com/wnCNADH.png"
+        },
+        {
+            "name": "Ronghang Hu",
+            "organization": "UC Berkeley/Facebook AI Research",
+            "website": "https://ronghanghu.com",
+            "img_url": "https://ronghanghu.com/wp-content/uploads/2014/12/Myself-6-e1447441544365.jpg"
+        },
+        {
+            "name": "Marcus Rohrbach",
+            "organization": "Facebook AI Research",
+            "website": "https://rohrbach.vision",
+            "img_url": "https://visualqa.org/static/img/marcus.jpg"
+        },
+        {
+            "name": "Amanpreet Singh",
+            "organization": "Facebook AI Research",
+            "website": "https://apsdehal.in",
+            "img_url": "https://visualqa.org/static/img/aman.jpg"
         }
     ]
 }

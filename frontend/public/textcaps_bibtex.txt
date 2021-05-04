@@ -1,0 +1,8 @@
+@misc{sidorov2020textcaps,
+    title={TextCaps: a Dataset for Image Captioning with Reading Comprehension},
+    author={Oleksii Sidorov and Ronghang Hu and Marcus Rohrbach and Amanpreet Singh},
+    year={2020},
+    eprint={2003.12462},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}

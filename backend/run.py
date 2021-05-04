@@ -24,7 +24,6 @@ def create_app():
 
 app = create_app()
 
-@app.route('/' + app.config["index_name"] + '/_msearch', methods=["GET", "POST"])
 def proxy():
     config = app.config
     base_url = config['elasticsearch_url']
@@ -68,3 +67,6 @@ def proxy():
 
     response = Response(resp.content, resp.status_code, headers)
     return response
+
+for index in app.config["indices"]:
+    app.route('/' + index + '/_msearch', methods=["GET", "POST"])(proxy)

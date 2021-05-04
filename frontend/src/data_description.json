@@ -1,23 +1,64 @@
 {
-    "data": [
-        {
-            "question_id": "INT, incremental unique ID for the question",
-            "question": "what is ....?",
-            "question_tokens": ["token_1", "token_2", "...", "token_N"],
-            "image_id": "OpenImages Image ID",
-            "image_classes": ["OpenImages_class_1", "OpenImages_class_2", "...",
-                "OpenImages_class_n"],
-            "flickr_original_url": "OpenImages original flickr url",
-            "flickr_300k_url": "OpenImages flickr 300k thumbnail url",
-            "image_width": "INT, Width of the image",
-            "image_height": "INT, Height of the image",
-            "set_name": "Dataset split question belongs to",
-            "answers": [
-                "answer_1",
-                "answer_2",
-                "...",
-                "answer_10"
-            ],
+    "textvqa": {
+        "data": [
+            {
+                "question_id": "INT, incremental unique ID for the question",
+                "question": "what is ....?",
+                "question_tokens": ["token_1", "token_2", "...", "token_N"],
+                "image_id": "OpenImages Image ID",
+                "image_classes": ["OpenImages_class_1", "OpenImages_class_2", "...",
+                    "OpenImages_class_n"],
+                "flickr_original_url": "OpenImages original flickr url",
+                "flickr_300k_url": "OpenImages flickr 300k thumbnail url",
+                "image_width": "INT, Width of the image",
+                "image_height": "INT, Height of the image",
+                "set_name": "Dataset split question belongs to",
+                "answers": [
+                    "answer_1",
+                    "answer_2",
+                    "...",
+                    "answer_10"
+                ]
+            }
+        ],
+        "dataset_type": "Split train|val|test",
+        "dataset_name": "textvqa",
+        "dataset_version": "VERSION"
+    },
+    "textcaps": {
+        "data": [
+            {
+                "image_id": "Alphanumeric String, unique OpenImages Image ID",
+                "caption_str": "The poster says ...",
+                "caption_tokens": ["token_1", "token_2", "...", "token_N"],
+                "caption_id": "INT, incremental unique caption ID",
+                "image_classes": ["OpenImages_class_1", "OpenImages_class_2", "...",
+                    "OpenImages_class_n"],
+                "flickr_original_url": "OpenImages original flickr url",
+                "flickr_300k_url": "OpenImages flickr 300k thumbnail url",
+                "image_width": "INT, Width of the image",
+                "image_height": "INT, Height of the image",
+                "set_name": "Dataset split question belongs to",
+                "reference_strs": [
+                    "caption_1",
+                    "...",
+                    "...",
+                    "caption_5"
+                ],
+                "reference_tokens": [
+                    ["token_1_1", "...", "token_1_n"],
+                    ["..."],
+                    ["token_5_1", "...", "token_5_n"]
+                ]
+            }
+        ],
+        "dataset_type": "Split train|val|test",
+        "dataset_name": "textcaps",
+        "dataset_version": "VERSION"
+    },
+    "ocr": {
+        "data": {
+            "image_id": "STRING",
             "ocr_tokens": [
                 "OCR extracted text 1",
                 "OCR extracted text 2",
@@ -39,9 +80,9 @@
                     "word": "Extracted word unformatted"
                 }
             ]
-        }
-    ],
-    "dataset_type": "Split train|val|test",
-    "dataset_name": "textvqa",
-    "dataset_version": "VERSION"
+        },
+        "dataset_type": "Split train|val|test",
+        "dataset_name": "textvqa_ocr",
+        "dataset_version": "VERSION"
+    }
 }
