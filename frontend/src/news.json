@@ -78,5 +78,11 @@
                 "news": "<a href='/textcaps/download'>TextCaps v0.1</a> containing 142,040 captions released."
             }
         ]
+    },
+    "textocr": {
+        "news": [{
+            "date": "May 2021",
+            "news": "<a href='/textocr/download'>TextOCR v0.1</a> containing 903,069 word annotations released."
+        }]
     }
 }

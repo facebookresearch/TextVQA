@@ -6,6 +6,7 @@ import CloudDownload from '@material-ui/icons/CloudDownload';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
 import { useLocation } from 'react-router-dom';
+import { getWebsiteType } from '../utils';
 
 const styles = (theme) => ({
     embed: {
@@ -27,15 +28,19 @@ const styles = (theme) => ({
 });
 
 const Paper = (props) => {
-    const type = useLocation().pathname.indexOf("textcaps") === -1 ? "textvqa" : "textcaps";
-    const paperLink = (type === "textcaps" ?
+    const websiteType = getWebsiteType();
+    const paperLink = (websiteType === "textcaps" ?
         "https://dl.fbaipublicfiles.com/textvqa/data/textcaps/textcaps.pdf" :
         "https://arxiv.org/abs/1904.08920"
     );
-    const paperPDFLink = (type === "textcaps" ?
+    const paperPDFLink = (websiteType === "textcaps" ?
         "https://dl.fbaipublicfiles.com/textvqa/data/textcaps/textcaps.pdf" :
         "https://arxiv.org/pdf/1904.08920"
     );
+
+    if (websiteType === "textocr") {
+        return "Manuscript will be available soon!"
+    }
 
     return (
         <Grid container justify="center" alignItems="center">

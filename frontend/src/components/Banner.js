@@ -233,7 +233,6 @@ class Banner extends Component {
 
     renderCardComponent = (result, cardIdx) => {
         const boxes = []
-
         for(const idx in result.ocr_info) {
             const ocrInfo = result.ocr_info[idx];
             const x1 = ocrInfo.bounding_box.top_left_x;

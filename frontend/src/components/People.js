@@ -7,6 +7,7 @@ import people from '../people_list.json';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import { useLocation } from 'react-router-dom';
+import { getWebsiteType } from '../utils';
 
 const styles = (theme) => ({
     avatar: {
@@ -23,7 +24,7 @@ const People = (props) => {
     let selectedPeople = []
     let lgSize = 2;
     const location = useLocation();
-    const index = location.pathname.indexOf("textcaps") === -1 ? "textvqa" : "textcaps";
+    const index = getWebsiteType({location: location});
 
     if (props.people) {
         selectedPeople = props.people;

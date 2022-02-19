@@ -74,5 +74,43 @@
             "website": "https://apsdehal.in",
             "img_url": "https://visualqa.org/static/img/aman.jpg"
         }
+    ],
+    "textocr": [
+        {
+            "name": "Amanpreet Singh*",
+            "organization": "Facebook AI Research",
+            "website": "https://apsdehal.in",
+            "img_url": "https://visualqa.org/static/img/aman.jpg"
+        },
+        {
+            "name": "Guan Pang*",
+            "organization": "Facebook AI Research",
+            "website": "https://www.linkedin.com/in/guan-pang-38aaaa29/",
+            "img_url": "https://i.imgur.com/pqIVgJp.png"
+        },
+        {
+            "name": "Mandy Toh*",
+            "organization": "Facebook AI Research",
+            "website": "https://www.linkedin.com/in/marn-yee-toh-2024a8126/",
+            "img_url": "https://i.imgur.com/8bzSdkb.png"
+        },
+        {
+            "name": "Jing Huang",
+            "organization": "Facebook AI Research",
+            "website": "https://superirabbit.github.io/",
+            "img_url": "https://superirabbit.github.io/img/JingHuang2.png"
+        },
+        {
+            "name": "Wojciech Galuba",
+            "organization": "Facebook AI Research",
+            "website": "https://www.linkedin.com/in/galuba/",
+            "img_url": "https://i.imgur.com/RTkVpRq.png"
+        },
+        {
+            "name": "Tal Hassner",
+            "organization": "Facebook AI Research",
+            "website": "https://talhassner.github.io/",
+            "img_url": "https://talhassner.github.io/home/images/tal2.jpg"
+        }
     ]
 }

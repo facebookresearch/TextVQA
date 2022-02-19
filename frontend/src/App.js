@@ -20,6 +20,8 @@ import Paper from './components/Paper';
 import TextCapsDownload from './components/TextCapsDownload';
 import TextVQAHead from './components/TextVQAHead';
 import TextCapsHead from './components/TextCapsHead';
+import TextOCRHead from './components/TextOCRHead';
+import TextOCRDownload from './components/TextOCRDownload';
 
 class App extends Component {
   render() {
@@ -35,6 +37,8 @@ class App extends Component {
                 <Route path="/" component={TextVQAHead} />
                 <Route path="/textcaps" component={TextCapsHead} />
                 <Route path="/textcaps" exact component={Home} />
+                <Route path="/textocr" component={TextOCRHead} />
+                <Route path="/textocr" exact component={Home} />
                 <Route path="/:type?/explore" component={Explore} />
                 <Route exact path="/textcaps/challenge" component={TextCapsChallenge} />
                 <Route exact path="/textcaps/challenge/2021" component={TextCapsChallenge} />
@@ -45,9 +49,11 @@ class App extends Component {
                 <Route exact path="/challenge/2021" component={Challenge} />
                 <Route exact path="/download" component={Download} />
                 <Route exact path="/textcaps/download" component={TextCapsDownload} />
+                <Route exact path="/textocr/download" component={TextOCRDownload} />
                 <Route path="/:type?/code" component={Code} />
                 <Route exact path="/dataset" component={Download} />
                 <Route exact path="/textcaps/dataset" component={TextCapsDownload} />
+                <Route exact path="/textocr/dataset" component={TextOCRDownload} />
                 <Route path="/:type?/paper" component={Paper} />
               </div>
           </div>

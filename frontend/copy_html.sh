@@ -2,7 +2,7 @@
 
 routes=(leaderboard faq login tasks diagnostics)
 
-declare -a routes=("textcaps" "textcaps/download" "textcaps/challenge" "textcaps/explore" "textcaps/dataset" "dataset" "challenge" "download" "explore")
+declare -a routes=("textcaps" "textcaps/download" "textcaps/challenge" "textcaps/explore" "textcaps/dataset" "textocr" "textocr/download" "textocr/challenge" "textocr/explore" "textocr/dataset" "dataset" "challenge" "download" "explore")
 
 cd build
 

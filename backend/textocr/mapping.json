@@ -1,0 +1,44 @@
+{
+        "properties": {
+            "flickr_original_url": {
+                "type": "keyword",
+                "index": false
+            },
+            "flickr_300k_url": {
+                "type": "keyword",
+                "index": false
+            },
+            "image_id": {
+                "type": "keyword"
+            },
+            "set_name": {
+                "type": "keyword"
+            },
+            "ocr_tokens": {
+                "type": "text",
+                "analyzer": "autocomplete",
+                "search_analyzer": "standard",
+                "fielddata": true
+            },
+            "image_classes": {
+                "type": "keyword"
+            },
+            "image_height": {
+                "type": "integer"
+            },
+            "image_width": {
+                "type": "integer"
+            },
+            "ocr_info": {
+                "type": "nested",
+                "properties": {
+                    "points": {
+                        "type": "float"
+                    },
+                    "word": {
+                        "type": "keyword"
+                    }
+                }
+            }
+        }
+}

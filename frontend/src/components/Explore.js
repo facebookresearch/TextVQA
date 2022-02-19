@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid'
 import * as config from '../frontend_config.json';
 import Banner from './Banner';
 import { withRouter } from 'react-router';
+import BannerTextOCR from './BannerTextOCR';
 
 const styles = theme => ({
     root: {
@@ -48,7 +49,7 @@ class Explore extends Component {
         body = body.replace('"field":"image_classes"', '"field":"image_classes"');
         if (type === "textcaps") {
             body = body.replace('"field":"captions"', '"field":"captions"');
-        } else{
+        } else if (type == "textcaps") {
             body = body.replace('"field":"question"', '"field":"question"');
             body = body.replace('"field":"answers"', '"field":"answers"');
         }
@@ -92,7 +93,9 @@ class Explore extends Component {
 
         let array = [];
 
-        if (type === "textcaps") {
+        if (type === "textocr") {
+            array = ["set_name", "image_classes", "ocr_tokens"];
+        } else if (type === "textcaps") {
             array = ["set_name", "image_classes", "ocr_tokens", "captions"];
         } else {
             array = ["set_name", "image_classes", "ocr_tokens", "question", "answer"];
@@ -110,6 +113,7 @@ class Explore extends Component {
         let mainDataField = "question";
         let mainPlaceHolder = "Search in the questions";
         let isTextVQA = true;
+        let isTextOCR = false;
         let showQuestionsPlaceholder = "Show Questions";
 
         if (type === "textcaps") {
@@ -118,6 +122,15 @@ class Explore extends Component {
             isTextVQA = false;
             showQuestionsPlaceholder = "Show Captions";
             config.index_name = "textcaps";
+        }
+
+        let BannerClass = Banner;
+        if (type === "textocr") {
+            this.reactValues.and.pop();
+            config.index_name = "textocr";
+            BannerClass = BannerTextOCR;
+            isTextVQA = false;
+            isTextOCR = true;
         }
 
         return (
@@ -132,21 +145,23 @@ class Explore extends Component {
                 className={this.props.classes.root}
                 justify="center"
                 alignItems="center"
-            >
-                <Grid item xs={12} md={6} lg={4}>
-                    <CategorySearch
-                        componentId="searchbox"
-                        dataField={mainDataField}
-                        autosuggest={false}
-                        categoryField={mainDataField}
-                        placeholder={mainPlaceHolder}
-                        debounce={1000}
-                        style={{
-                            padding: "5px"
-                        }}
-                        react={{ and: this.getReactArray(mainDataField)}}
-                    />
-                </Grid>
+            >   {
+                    !isTextOCR ?
+                    <Grid item xs={12} md={6} lg={4}>
+                        <CategorySearch
+                            componentId="searchbox"
+                            dataField={mainDataField}
+                            autosuggest={false}
+                            categoryField={mainDataField}
+                            placeholder={mainPlaceHolder}
+                            debounce={1000}
+                            style={{
+                                padding: "5px"
+                            }}
+                            react={{ and: this.getReactArray(mainDataField)}}
+                            />
+                    </Grid> : ""
+                }
                 <Grid item xs={12} md={2} lg={1}>
                     <MultiDropdownList
                         componentId="set_name"
@@ -194,18 +209,21 @@ class Explore extends Component {
                                 label="Show OCR boxes">
                             </FormControlLabel>
                         </MenuItem>
-                        <MenuItem>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
+                        {
+                            !isTextOCR ?
+                            <MenuItem>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
                                         checked={this.state.showQuestions}
                                         onChange={this.handleCheckboxChange('showQuestions')}
                                         value="showQuestions"
-                                    />
-                                }
-                                label={showQuestionsPlaceholder}>
-                            </FormControlLabel>
-                        </MenuItem>
+                                        />
+                                    }
+                                    label={showQuestionsPlaceholder}>
+                                </FormControlLabel>
+                            </MenuItem> : ""
+                        }
                         {
                             isTextVQA ?
                             <MenuItem>
@@ -253,7 +271,7 @@ class Explore extends Component {
                             />
                     </Grid> : ""
                 }
-                <Banner
+                <BannerClass
                     showOCRBoxes={this.state.showOCRBoxes}
                     showAnswers={this.state.showAnswers}
                     showQuestions={this.state.showQuestions}

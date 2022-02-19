@@ -3,6 +3,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import { withStyles } from '@material-ui/core';
+import { getWebsiteType } from '../utils';
 
 const styles = (theme) => ({
     embed: {
@@ -23,7 +24,11 @@ const styles = (theme) => ({
     }
 });
 
-const Paper = (props) => {
+const Code = (props) => {
+    const websiteType = getWebsiteType();
+    if (websiteType === "textocr") {
+        return "Code will be available soon!";
+    }
     return (
         <Grid container justify="center" alignItems="center">
             <Grid
@@ -51,4 +56,4 @@ const Paper = (props) => {
     )
 }
 
-export default withStyles(styles)(Paper);
+export default withStyles(styles)(Code);

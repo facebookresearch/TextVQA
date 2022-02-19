@@ -466,7 +466,7 @@ const TextCapsChallenge = (props) => {
                     </Grid>
 
                     <Grid item className={props.classes.versionNumber} xs={12} md={12} lg={12}>
-                        <People lgSize={3} people={challengePeople[index]["2021"]} />
+                        <People lgSize={2} people={challengePeople[index]["2021"]} />
                     </Grid>
                     <Grid
                         container

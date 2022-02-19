@@ -139,6 +139,12 @@
         ],
         "2021": [
             {
+                "name": "Amanpreet Singh",
+                "organization": "Facebook AI Research",
+                "website": "https://apsdehal.in",
+                "img_url": "https://visualqa.org/static/img/aman.jpg"
+            },
+            {
                 "name": "Yash Kant",
                 "organization": "Georgia Tech",
                 "website": "https://yashkant.github.io/",
@@ -167,12 +173,6 @@
                 "organization": "Facebook AI Research",
                 "website": "https://rohrbach.vision",
                 "img_url": "https://visualqa.org/static/img/marcus.jpg"
-            },
-            {
-                "name": "Amanpreet Singh",
-                "organization": "Facebook AI Research",
-                "website": "https://apsdehal.in",
-                "img_url": "https://visualqa.org/static/img/aman.jpg"
             }
         ]
     }

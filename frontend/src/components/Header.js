@@ -25,6 +25,7 @@ import theme from '../styles';
 
 import ExploreHelp from './ExploreHelp';
 import { List, ListItem, Collapse, Typography } from '@material-ui/core';
+import { getWebsiteType } from '../utils';
 
 const CURRENT_YEAR = 2021;
 
@@ -97,7 +98,47 @@ const styles = {
             marginLeft: '-0.75em'
         }
     }
-  };
+};
+
+const mappings = {
+    urlPrefix: {
+        textvqa: '/',
+        textcaps: '/textcaps/',
+        textocr: '/textocr/'
+    },
+    fullText: {
+        textvqa: 'TextVQA',
+        textcaps: 'TextCaps',
+        textocr: 'TextOCR'
+    },
+    logoOnlyWhiteUrl: {
+        textvqa: '/assets/images/textvqa_logo_white.svg',
+        textcaps: '/assets/images/textcaps_logo_white.svg',
+        textocr: '/assets/images/textocr/logo_only_white.svg'
+    },
+    logoOnlyUrl: {
+        textvqa: '/assets/images/textvqa_logo.svg',
+        textcaps: '/assets/images/textcaps_logo.svg',
+        textocr: '/assets/images/textocr/logo_only.svg'
+    },
+    uniqueKey: {
+        textvqa: 0,
+        textcaps: 1,
+        textocr: 2,
+    },
+    paperLink: {
+        textvqa: 'https://openaccess.thecvf.com/content_CVPR_2019/html/Singh_Towards_VQA_Models_That_Can_Read_CVPR_2019_paper.html',
+        textcaps: 'https://arxiv.org/abs/2003.12462',
+        textocr: 'https://openaccess.thecvf.com/content/CVPR2021/html/Singh_TextOCR_Towards_Large-Scale_End-to-End_Reasoning_for_Arbitrary-Shaped_Scene_Text_CVPR_2021_paper.html',
+    },
+    codeLink: {
+        textvqa: 'https://github.com/facebookresearch/mmf',
+        textcaps: 'https://github.com/facebookresearch/mmf/tree/project/m4c/projects/M4C_Captioner',
+        textocr: '/textocr/code',
+    }
+};
+
+const allWebsites = ['textvqa', 'textcaps', 'textocr'];
 
 class Header extends React.Component {
     state = {
@@ -152,7 +193,9 @@ class Header extends React.Component {
         const { mobileMoreAnchorEl, challengeAnchorEl } = this.state;
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
         const isChallengeMenuOpen = Boolean(challengeAnchorEl);
-        const isTextVQA = this.props.location.pathname.indexOf('textcaps') === -1;
+        const websiteType = getWebsiteType(this.props);
+        const isTextVQA = websiteType === "textvqa";
+        const isTextOCR = websiteType === "textocr";
         const pathSplits = this.props.location.pathname.split("/");
         const challengeYear = parseInt(
             pathSplits[pathSplits.length - 1].indexOf('20') === -1
@@ -184,7 +227,7 @@ class Header extends React.Component {
                                 component="a"
                                 data-no-link={true}
                                 href={
-                                    (isTextVQA ? "" : "/textcaps") + "/challenge/"
+                                    (mappings.urlPrefix[websiteType]) + "challenge/"
                                     + (challengeYear === year ? "" : year)
                                 }
                                 key={year}
@@ -200,7 +243,6 @@ class Header extends React.Component {
 
             </ClickAwayListener>
         )
-
 
         const textVQAChallengeMenu = (
             <Menu
@@ -226,7 +268,7 @@ class Header extends React.Component {
                                 component="a"
                                 data-no-link={true}
                                 href={
-                                    (isTextVQA ? "" : "/textcaps") + "/challenge/"
+                                    (mappings.urlPrefix[websiteType]) + "challenge/"
                                     + (challengeYear === year ? "" : year)
                                 }
                                 key={year}
@@ -266,117 +308,79 @@ class Header extends React.Component {
             </div>
         )
         const classesGrowButton = [classes.buttonLink, classes.grow, classes.inactiveLink].join(' ');
-        const textVQALink = (
+
+        const otherWebsiteButtons = allWebsites.map((website) => {
+            if (website !== websiteType) {
+                return (
+                    <Link
+                        underline="none"
+                        key={mappings.uniqueKey[website]}
+                        className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                        href={mappings.urlPrefix[website]}
+                    >
+                        <Button disableRipple={true} disableFocusRipple={true} color="inherit">
+                            {/* <CloudDownload className={classes.leftIcon} /> */}
+                            <img
+                                className={classes.otherDatasetIcon}
+                                srcSet={mappings.logoOnlyWhiteUrl[website]}
+                                alt={mappings.fullText[website]}
+                                />
+
+                            {mappings.fullText[website]}
+                        </Button>
+                    </Link>
+                );
+            } else {
+                return '';
+            }
+        });
+
+        const otherWebsiteButtonsMobile = allWebsites.map((website) => {
+            if (website !== websiteType) {
+                return (
+                    <MenuItem onClick={this.handleMobileMenuClose}>
+                        <Link
+                            underline="none"
+                            key={mappings.uniqueKey[website]}
+                            className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                            href={mappings.urlPrefix[website]}
+                        >
+                            <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                {/* <CloudDownload className={classes.leftIcon} /> */}
+                                <img
+                                    className={classes.otherDatasetIcon}
+                                    srcSet={mappings.logoOnlyWhiteUrl[website]}
+                                    alt={mappings.fullText[website]}
+                                    />
+
+                                {mappings.fullText[website]}
+                            </Button>
+                        </Link>
+                    </MenuItem>
+                );
+            } else {
+                return '';
+            }
+        });
+
+
+
+        const homeLink = (
             <Link
-                key={isTextVQA ? 0 : 1}
-                underline="none"
-                align="left"
-                // className={isTextVQA ? classesButton : classesGrowButton}
-                className={classesGrowButton}
-                href={process.env.PUBLIC_URL + '/'}
-            >
-                <img
-                    className={classes.logo}
-                    srcSet="/assets/images/textvqa_logo_white.svg"
-                    alt="TextVQA"
-                />
-                <span className={classes.logoText}>
-                TextVQA
-                </span>
-            </Link>
-
-        );
-
-        const textVQAButtonLink = (
-            <Link
-                underline="none"
-                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                href="/"
-            >
-                <Button disableRipple={true} disableFocusRipple={true} color="inherit">
-                    {/* <CloudDownload className={classes.leftIcon} /> */}
-                    <img
-                        className={classes.otherDatasetIcon}
-                        srcSet="/assets/images/textvqa_logo_white.svg"
-                        alt="TextVQA"
-                    />
-
-                    TextVQA
-                </Button>
-            </Link>
-        )
-        const textVQAButtonMobileLink = (
-            <Link
-                underline="none"
-                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                href="/"
-            >
-                <Button disableRipple={true} disableFocusRipple={true} color="default">
-                    {/* <CloudDownload className={classes.leftIcon} /> */}
-                    <img
-                        className={classes.otherDatasetIcon}
-                        srcSet="/assets/images/textvqa_logo.svg"
-                        alt="TextVQA"
-                    />
-
-                    TextVQA
-                </Button>
-            </Link>
-        )
-
-        const textCapsButtonLink = (
-            <Link
-                underline="none"
-                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                href="/textcaps"
-            >
-                <Button disableRipple={true} disableFocusRipple={true} color="inherit">
-                    {/* <CloudDownload className={classes.leftIcon} /> */}
-                    <img
-                        className={classes.otherDatasetIcon}
-                        srcSet="/assets/images/textcaps_logo_white.svg"
-                        alt="TextCaps"
-                    />
-
-                    TextCaps
-                </Button>
-            </Link>
-        )
-        const textCapsButtonMobileLink = (
-            <Link
-                underline="none"
-                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                href="/textcaps"
-            >
-                <Button disableRipple={true} disableFocusRipple={true} color="default">
-                    {/* <CloudDownload className={classes.leftIcon} /> */}
-                    <img
-                        className={classes.otherDatasetIcon}
-                        srcSet="/assets/images/textcaps_logo.svg"
-                        alt="TextCaps"
-                    />
-
-                    TextCaps
-                </Button>
-            </Link>
-        )
-
-        const textCapsLink = (
-            <Link
-                key={isTextVQA ? 1 : 0}
+                key={mappings.uniqueKey[websiteType]}
                 underline="none"
                 align="left"
                 // className={isTextVQA ? classesGrowButton : classesButton}
                 className={classesGrowButton}
-                href={process.env.PUBLIC_URL + '/textcaps/'}
+                href={process.env.PUBLIC_URL.replace(/\/$/, "") + mappings.urlPrefix[websiteType]}
             >
                 <img
                     className={classes.logo}
-                    srcSet="/assets/images/textcaps_logo_white.svg"
-                    alt="TextCaps"
+                    srcSet={mappings.logoOnlyWhiteUrl[websiteType]}
+                    alt={mappings.fullText[websiteType]}
                 />
                 <span className={classes.logoText}>
-                TextCaps
+                {mappings.fullText[websiteType]}
                 </span>
             </Link>
 
@@ -393,16 +397,12 @@ class Header extends React.Component {
                 <ClickAwayListener onClickAway={this.handleMobileMenuClose}>
                     <MenuList>
                         <Route exact path="/type:?/explore" render={() => helpMobileMenuItem} />
-                        <MenuItem onClick={this.handleMobileMenuClose}>
-                            {
-                                isTextVQA ? textCapsButtonMobileLink : textVQAButtonMobileLink
-                            }
-                        </MenuItem>
+                        {otherWebsiteButtonsMobile}
                         <MenuItem onClick={this.handleMobileMenuClose}>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={(isTextVQA ? "/" : "/textcaps/") + "dataset"}
+                                href={mappings.urlPrefix[websiteType] + "dataset"}
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="default">
                                     <CloudDownload className={classes.leftIcon} />
@@ -410,27 +410,32 @@ class Header extends React.Component {
                                 </Button>
                             </Link>
                         </MenuItem>
-                        <MenuItem onClick={this.handleMobileMenuClose}>
+                        {
+                            !isTextOCR ?
+                            <MenuItem onClick={this.handleMobileMenuClose}>
                             <Link
-                                underline="none"
-                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={(isTextVQA ? "/" : "/textcaps/") + "challenge"}
-                            >
+                                    underline="none"
+                                    className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                    href={mappings.urlPrefix[websiteType] + "challenge"}
+                                    >
 
-                                <Button disableRipple={true} disableFocusRipple={true} color="default">
-                                    <Equalizer className={classes.leftIcon} />
-                                    Challenge
-                                    {isTextVQA ? <ExpandMoreIcon fontSize="small" /> : ""}
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                        {textVQAChallengeMenuMobile}
+                                    <Button disableRipple={true} disableFocusRipple={true} color="default">
+                                        <Equalizer className={classes.leftIcon} />
+                                        Challenge
+                                        {isTextVQA ? <ExpandMoreIcon fontSize="small" /> : ""}
+                                    </Button>
+                                </Link>
+                            </MenuItem> : ''
+                        }
+                        {
+                            !isTextOCR ?
+                            textVQAChallengeMenuMobile : ''
+                        }
                         <MenuItem onClick={this.handleMobileMenuClose}>
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={(isTextVQA ? "https://arxiv.org/abs/1904.08920" :
-                                        "https://arxiv.org/abs/2003.12462")}
+                                href={mappings.paperLink[websiteType]}
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="default">
                                     <Description className={classes.leftIcon} />
@@ -442,9 +447,7 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={isTextVQA ? "https://github.com/facebookresearch/pythia" :
-                                    "https://github.com/facebookresearch/pythia/tree/project/m4c/projects/M4C_Captioner"
-                                }
+                                href={mappings.codeLink[websiteType]}
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="default">
                                     <Code className={classes.leftIcon} />
@@ -456,7 +459,7 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={(isTextVQA ? "/" : "/textcaps/") + "explore"}
+                                href={mappings.urlPrefix[websiteType] + "explore"}
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="default">
                                     <Explore className={classes.leftIcon} />
@@ -473,43 +476,38 @@ class Header extends React.Component {
             <div className={classes.root}>
                 <AppBar position="static" color="primary">
                     <Toolbar>
-                        {
-                            isTextVQA ? textVQALink : textCapsLink
-                        }
-                        {/* {
-                            isTextVQA ? textCapsLink : textVQALink
-                        } */}
+                        {homeLink}
                         <div className={classes.sectionDesktop}>
-                            <Route exact path="/type?/explore" render={() => exploreHelpMenu}/>
+                            <Route exact path="/type:?/explore" render={() => exploreHelpMenu}/>
+                            {otherWebsiteButtons}
                             {
-                                isTextVQA ? textCapsButtonLink : textVQAButtonLink
+                                !isTextOCR ?
+                                <Link
+                                underline="none"
+                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                href={mappings.urlPrefix[websiteType] + "challenge" }
+                                >
+
+                                    <Button
+                                        disableRipple={true}
+                                        disableFocusRipple={true}
+                                        aria-owns={challengeAnchorEl ? challengeAnchorEl : undefined}
+                                        aria-haspopup="true"
+                                        onClick={this.handleChallengeMenuOpen}
+                                        onMouseEnter={this.handleChallengeMenuOpen}
+                                        className={[classes.buttonLink, classes.buttonsSide].join(' ')}
+                                        >
+                                        <Equalizer className={classes.leftIcon}/>
+                                        Challenge
+                                        {<ExpandMoreIcon fontSize="small"/>}
+                                        {textVQAChallengeMenu}
+                                    </Button>
+                                </Link> : ''
                             }
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={isTextVQA ? "/challenge" : "/textcaps/challenge" }
-                            >
-
-                                <Button
-                                    disableRipple={true}
-                                    disableFocusRipple={true}
-                                    aria-owns={challengeAnchorEl ? challengeAnchorEl : undefined}
-                                    aria-haspopup="true"
-                                    onClick={this.handleChallengeMenuOpen}
-                                    onMouseEnter={this.handleChallengeMenuOpen}
-                                    className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                >
-                                    <Equalizer className={classes.leftIcon}/>
-                                    Challenge
-                                    {<ExpandMoreIcon fontSize="small"/>}
-                                    {textVQAChallengeMenu}
-                                </Button>
-                            </Link>
-                            <Link
-                                underline="none"
-                                className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={(isTextVQA ? "https://arxiv.org/abs/1904.08920" :
-                                    "https://arxiv.org/abs/2003.12462")}
+                                href={mappings.paperLink[websiteType]}
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="inherit">
                                     <Description className={classes.leftIcon}/>
@@ -519,9 +517,7 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={isTextVQA ? "https://github.com/facebookresearch/pythia" :
-                                    "https://github.com/facebookresearch/pythia/tree/project/m4c/projects/M4C_Captioner"
-                                }
+                                href={mappings.codeLink[websiteType]}
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="inherit">
                                     <Code className={classes.leftIcon}/>
@@ -531,7 +527,7 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={(isTextVQA ? "/" : "/textcaps/") + "dataset"}
+                                href={mappings.urlPrefix[websiteType] + "dataset"}
                             >
                                 <Button disableRipple={true} disableFocusRipple={true} color="inherit">
                                     <CloudDownload className={classes.leftIcon}/>
@@ -541,7 +537,7 @@ class Header extends React.Component {
                             <Link
                                 underline="none"
                                 className={[classes.buttonLink, classes.buttonsSide].join(' ')}
-                                href={(isTextVQA ? "/" : "/textcaps/") + "explore"}
+                                href={mappings.urlPrefix[websiteType] + "explore"}
                         >
                                 <Button disableRipple={true} disableFocusRipple={true} color="inherit">
                                     <Explore className={classes.leftIcon}/>
